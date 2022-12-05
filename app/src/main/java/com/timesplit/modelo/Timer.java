@@ -13,7 +13,14 @@ public class Timer {
     private boolean volumen;
 
 
-    //COnstructores
+    //Constructores
+    public Timer(int tiempo_trabajo, int tiempo_descanso, int tiempo_preparacion, int numero_rondas) {
+        this.tiempo_trabajo = tiempo_trabajo;
+        this.tiempo_descanso = tiempo_descanso;
+        this.tiempo_preparacion = tiempo_preparacion;
+        this.numero_rondas = numero_rondas;
+    }
+
 
     //Metodos de acceso
 

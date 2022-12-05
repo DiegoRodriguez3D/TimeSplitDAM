@@ -38,10 +38,6 @@ public class MainActivity extends AppCompatActivity {
         button_insertar = findViewById(R.id.button_insertar);
         button_listar = findViewById(R.id.button_listar);
 
-        //Si la agenda esta vacia, la rellena con contactos de prueba
-        if(db.devuelveListaContactos().size()==0)
-            rellenaAgenda(db);
-
         //INSERTAR
         button_insertar.setOnClickListener(v -> {
             //Comprueba que todos los campos estén llenos
@@ -105,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //LISTA
+        //PERFILES
         button_listar.setOnClickListener(v -> {
-            // Crea intent para lanzar la activity con el listado de contactos
+            // Crea intent para lanzar la activity con el listado de perfiles
             Intent intent = new Intent(MainActivity.this, com.timesplit.vista.PerfilesActivity.class);
             //Abre activity
             startActivity(intent);
@@ -130,17 +126,4 @@ public class MainActivity extends AppCompatActivity {
         editText_email.setText("");
     }
 
-    //Rellena la tabla con contactos
-    public void rellenaAgenda(BD_Controller db) {
-//        com.drb.act2.Contacto c1 = new com.drb.act2.Contacto("Diego", "677789012", "diego@gmail.com");
-//        db.insertarContacto(c1);
-//        com.drb.act2.Contacto c2 = new com.drb.act2.Contacto("Silvia", "612345678", "silvia@gmail.com");
-//        db.insertarContacto(c2);
-//        com.drb.act2.Contacto c3 = new com.drb.act2.Contacto("Sara", "624567890", "sara@gmail.com");
-//        db.insertarContacto(c3);
-//        com.drb.act2.Contacto c4 = new com.drb.act2.Contacto("Ivan", "654123456", "ivan@gmail.com");
-//        db.insertarContacto(c4);
-//        com.drb.act2.Contacto c5 = new com.drb.act2.Contacto("Chema", "634567890", "chema@gmail.com");
-//        db.insertarContacto(c5);
-    }
 }
