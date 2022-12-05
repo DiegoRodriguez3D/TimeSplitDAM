@@ -2,13 +2,13 @@ package com.timesplit.modelo;
 
 public class AjustesUsuario {
     private int id_ajustes;
-    private boolean tema;
-    private boolean sonido;
+    private int tema;
+    private int sonido;
     private int volumen;
     private String nombre_usuario;
 
     //Constructores
-    public AjustesUsuario(int id_ajustes, boolean tema, boolean sonido, int volumen, String nombre_usuario) {
+    public AjustesUsuario(int id_ajustes, int tema, int sonido, int volumen, String nombre_usuario) {
         this.id_ajustes = id_ajustes;
         this.tema = tema;
         this.sonido = sonido;
@@ -21,6 +21,7 @@ public class AjustesUsuario {
     }
 
     //Metodos de acceso
+
     public int getId_ajustes() {
         return id_ajustes;
     }
@@ -29,19 +30,19 @@ public class AjustesUsuario {
         this.id_ajustes = id_ajustes;
     }
 
-    public boolean isTema() {
+    public int getTema() {
         return tema;
     }
 
-    public void setTema(boolean tema) {
+    public void setTema(int tema) {
         this.tema = tema;
     }
 
-    public boolean isSonido() {
+    public int getSonido() {
         return sonido;
     }
 
-    public void setSonido(boolean sonido) {
+    public void setSonido(int sonido) {
         this.sonido = sonido;
     }
 

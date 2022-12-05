@@ -33,8 +33,8 @@ public class BD_Controller extends SQLiteOpenHelper {
 
         String CREA_TABLA_A_USUARIOS = "CREATE TABLE " + Utilidades.BD_TABLA_A_USUARIO + "("
                 + Utilidades.USUARIO_A_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + Utilidades.USUARIO_A_TEMA + " BOOLEAN,"
-                + Utilidades.USUARIO_A_SONIDO + " BOOLEAN,"
+                + Utilidades.USUARIO_A_TEMA + " INTEGER,"
+                + Utilidades.USUARIO_A_SONIDO + " INTEGER,"
                 + Utilidades.USUARIO_A_VOLUMEN + " INTEGER,"
                 + Utilidades.USUARIO_A_USERNAME + " VARCHAR,"
                 + " CONSTRAINT fk_"+Utilidades.USUARIO_A_USERNAME
@@ -64,7 +64,7 @@ public class BD_Controller extends SQLiteOpenHelper {
                 + Utilidades.PERFILES_A_COLOR_TRABAJO + " VARCHAR,"
                 + Utilidades.PERFILES_A_COLOR_DESCANSO + " VARCHAR,"
                 + Utilidades.PERFILES_A_COLOR_PREPARACION + " VARCHAR,"
-                + Utilidades.PERFILES_A_SONIDO + " BOOLEAN,"
+                + Utilidades.PERFILES_A_SONIDO + " INTEGER,"
                 + Utilidades.PERFILES_A_ID_PERFIL + " INTEGER,"
                 + " CONSTRAINT fk_" + Utilidades.PERFILES_A_ID_PERFIL
                 + " FOREIGN KEY("+ Utilidades.PERFILES_A_ID_PERFIL+") REFERENCES " + Utilidades.BD_TABLA_PERFILES + "(" + Utilidades.PERFILES_ID + ") ON DELETE CASCADE"
