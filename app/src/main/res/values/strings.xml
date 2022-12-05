@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TimeSplit</string>
+    <string name="db_borrar">DROP TABLE IF EXISTS</string>
+    <string name="empty">Faltan datos en el formulario.</string>
+    <string name="success">Operación completada.</string>
+    <string name="errorNombre">El nombre introducido ya existe.</string>
+    <string name="emptyNombre">Introduzca el nombre del contacto a eliminar.</string>
+    <string name="errorNombre2">El nombre introducido no existe.</string>
+</resources>
