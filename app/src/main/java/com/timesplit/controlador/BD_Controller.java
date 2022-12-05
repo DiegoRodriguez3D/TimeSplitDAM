@@ -33,7 +33,7 @@ public class BD_Controller extends SQLiteOpenHelper {
 
         String CREA_TABLA_A_USUARIOS = "CREATE TABLE " + Utilidades.BD_TABLA_A_USUARIO + "("
                 + Utilidades.USUARIO_A_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + Utilidades.USUARIO_A_TEMA + " VARCHAR,"
+                + Utilidades.USUARIO_A_TEMA + " BOOLEAN,"
                 + Utilidades.USUARIO_A_SONIDO + " BOOLEAN,"
                 + Utilidades.USUARIO_A_VOLUMEN + " INTEGER,"
                 + Utilidades.USUARIO_A_USERNAME + " VARCHAR,"
