@@ -6,98 +6,113 @@
     android:layout_height="match_parent"
     tools:context=".vista.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:orientation="vertical"
+        app:cardCornerRadius="12dp"
+        app:cardPreventCornerOverlap="true"
         app:layout_constraintBottom_toTopOf="@+id/filledButton_Perfiles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/textView_Titulo"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:fontFamily="sans-serif-thin"
-            android:text="QuickStart"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorPrimary"
-            android:textSize="34sp" />
+            android:orientation="vertical"
+            android:outlineProvider="none"
+            android:padding="@dimen/PaddingWrapper">
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField_tiempoTrabajo"
-            style="?attr/textInputOutlinedDenseStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Trabajo"
-            app:cornerRadius="@dimen/redondeoEsquinas">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
+                android:id="@+id/textView_Titulo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:singleLine="true" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="QuickStart"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="48sp" />
 
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField_tiempoDescanso"
-            style="?attr/textInputOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Descanso">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField_tiempoTrabajo"
+                style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:singleLine="true" />
+                android:layout_height="wrap_content"
+                android:hint="Trabajo"
+                app:boxCornerRadiusTopStart="10dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="time"
+                    android:singleLine="true" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField_tiempoPreparacion"
-            style="?attr/textInputOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Preparacion">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField_tiempoDescanso"
+                style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:singleLine="true" />
+                android:layout_height="wrap_content"
+                android:hint="Descanso">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:singleLine="true" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField_numeroRondas"
-            style="?attr/textInputOutlinedStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Rondas">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField_tiempoPreparacion"
+                style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:singleLine="true" />
+                android:layout_height="wrap_content"
+                android:hint="Preparacion">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/outlinedTextField_numeroRondas"
+                style="?attr/textInputOutlinedDenseStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rondas"
+                app:boxCornerRadiusBottomEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/filledButton_Start"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:text="Comenzar"
-            app:cornerRadius="@dimen/redondeoEsquinas" />
+            <Button
+                android:id="@+id/filledButton_Start"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:text="COMENZAR"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:cornerRadius="12dp" />
 
-    </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/filledButton_Perfiles"

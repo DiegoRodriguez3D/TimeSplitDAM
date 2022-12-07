@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="elevacion">12dp</dimen>
-    <dimen name="redondeoEsquinas">15dp</dimen>
+    <dimen name="redondeoEsquinas">30dp</dimen>
     <dimen name="padding_general">10dp</dimen>
+    <dimen name="PaddingWrapper">12dp</dimen>
 </resources>

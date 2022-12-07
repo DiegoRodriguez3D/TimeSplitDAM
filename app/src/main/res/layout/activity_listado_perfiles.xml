@@ -7,7 +7,7 @@
     tools:context=".vista.PerfilesActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_contactos"
+        android:id="@+id/recyclerView_perfiles"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -18,20 +18,20 @@
         android:fadingEdgeLength="4dp"
         android:requiresFadingEdge="vertical"
         android:scrollIndicators="right"
-        app:layout_constraintBottom_toTopOf="@+id/button_volver"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_volver"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton_Add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Volver"
-        app:cornerRadius="@dimen/redondeoEsquinas"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>
