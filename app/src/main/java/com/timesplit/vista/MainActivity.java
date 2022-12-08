@@ -10,14 +10,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.timesplit.R;
 import com.timesplit.controlador.BD_Controller;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView_nombre, textView_telefono, textView_email;
-    private EditText editText_nombre, editText_telefono, editText_email;
-    private Button button_comenzar, button_perfiles;
+    private Button iconButton_PlayQuickStart, button_perfiles, iconButton_HomeMenu;
+    private TextInputEditText EditText_trabajo, EditText_descanso, EditText_preparacion, EditText_rondas;
+
+
 
 
     public static int estado = 0;
@@ -30,8 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
         //Databinding
         button_perfiles = findViewById(R.id.filledButton_Perfiles);
-//        textView_nombre = findViewById(R.id.outlinedTextField_tiempoDescanso);
-//        editText_nombre = findViewById(R.id.outlinedTextField_tiempoDescanso);
+        iconButton_HomeMenu = findViewById(R.id.iconButton_HomeMenu);
+        iconButton_PlayQuickStart = findViewById(R.id.iconButton_PlayQuickStart);
+        EditText_trabajo = findViewById(R.id.EditText_trabajo);
+        EditText_descanso = findViewById(R.id.EditText_descanso);
+        EditText_preparacion = findViewById(R.id.EditText_preparacion);
+        EditText_rondas = findViewById(R.id.EditText_rondas);
+
 
 
         //INSERTAR
@@ -105,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        iconButton_HomeMenu.setOnClickListener(h -> {
+            Intent intent = new Intent(MainActivity.this, com.timesplit.vista.MenuActivity.class);
+            startActivity(intent);
+        });
+
 
         //TEST CONTACTOS
         //Lista por consola los contactos almacenados al iniciar la aplicacion
@@ -117,9 +129,10 @@ public class MainActivity extends AppCompatActivity {
 
     //Vacía todos los campos
     private void vaciarCampos() {
-        editText_nombre.setText("");
-        editText_telefono.setText("");
-        editText_email.setText("");
+        EditText_trabajo.setText("");
+        EditText_descanso.setText("");
+        EditText_preparacion.setText("");
+        EditText_rondas.setText("");
     }
 
 }

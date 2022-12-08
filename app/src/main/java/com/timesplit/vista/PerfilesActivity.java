@@ -1,5 +1,6 @@
 package com.timesplit.vista;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class PerfilesActivity extends AppCompatActivity {
 
-    private Button button_volver;
+    private Button iconButton_Back, iconButton_HomeMenu;
     private FloatingActionButton button_add;
     private RecyclerView recyclerView_perfiles;
     private com.timesplit.vista.RecyclerView_Adapter recyclerView_adapter;
@@ -56,6 +57,21 @@ public class PerfilesActivity extends AppCompatActivity {
         button_add.setOnClickListener(a -> {
 //            addPerfil();
         });
+
+        //Back
+        iconButton_Back = findViewById(R.id.iconButton_Back);
+        iconButton_Back.setOnClickListener(h -> {
+            finish();
+        });
+
+        // Ajustes
+        iconButton_HomeMenu = findViewById(R.id.iconButton_HomeMenu);
+        iconButton_HomeMenu.setOnClickListener(h -> {
+            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.MenuActivity.class);
+            startActivity(intent);
+        });
+
+
 
         //VOLVER
 //        button_volver = findViewById(R.id.button_volver);

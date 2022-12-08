@@ -6,6 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".vista.MainActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="410dp"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textView_HomeUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Diego"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/iconButton_HomeMenu"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                app:icon="@drawable/ic_round_menu_24"
+                app:iconGravity="textStart"
+                app:iconSize="25dp"
+                app:iconTint="@color/text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="0dp"
@@ -48,6 +95,7 @@
                 app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EditText_trabajo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
@@ -64,9 +112,11 @@
                 android:hint="Descanso">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EditText_descanso"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
+                    android:inputType="time"
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -79,9 +129,11 @@
                 android:hint="Preparacion">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EditText_preparacion"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
+                    android:inputType="time"
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -95,21 +147,25 @@
                 app:boxCornerRadiusBottomEnd="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/EditText_rondas"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="10dp"
+                    android:inputType="number"
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <Button
-                android:id="@+id/filledButton_Start"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:text="COMENZAR"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:cornerRadius="12dp" />
+                android:id="@+id/iconButton_PlayQuickStart"
+                style="?attr/materialIconButtonFilledStyle"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                app:icon="@drawable/logotimesplit"
+                app:iconGravity="textStart"
+                app:iconSize="35dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -126,6 +182,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_TimeSplit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/timesplit"
+        android:gravity="center_horizontal"
+        android:text="Time.Split"
+        android:textSize="58sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
