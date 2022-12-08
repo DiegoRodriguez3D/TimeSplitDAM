@@ -24,10 +24,12 @@ public class BD_Controller extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //Crea las tablas de la BD
 
+        // TODO: -> ID AUTOINCREMENT Logea con email (UNIQUE) y password, recupera ID sesión. Utiliza ID USUARIO para acceder a las demas tablas
         String CREAR_TABLA_USUARIOS = "CREATE TABLE " + Utilidades.BD_TABLA_USUARIO + "("
-                + Utilidades.USUARIO_USERNAME + " VARCHAR NOT NULL PRIMARY KEY,"
+                + Utilidades.USUARIO_ID + " INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,"
                 + Utilidades.USUARIO_PASS + " VARCHAR NOT NULL,"
                 + Utilidades.USUARIO_NOMBRE + " VARCHAR,"
+                + Utilidades.USUARIO_APELLIDOS + " VARCHAR,"
                 + Utilidades.USUARIO_EMAIL + " VARCHAR NOT NULL UNIQUE"
                 + ")";
 
@@ -38,9 +40,9 @@ public class BD_Controller extends SQLiteOpenHelper {
                 + Utilidades.USUARIO_A_TEMA + " INTEGER,"
                 + Utilidades.USUARIO_A_SONIDO + " INTEGER,"
                 + Utilidades.USUARIO_A_VOLUMEN + " INTEGER,"
-                + Utilidades.USUARIO_A_USERNAME + " VARCHAR NOT NULL UNIQUE,"
+                + Utilidades.USUARIO_A_USERNAME + " INTEGER NOT NULL UNIQUE,"
                 + " CONSTRAINT fk_"+Utilidades.USUARIO_A_USERNAME
-                + " FOREIGN KEY("+Utilidades.USUARIO_A_USERNAME+") REFERENCES "+ Utilidades.BD_TABLA_USUARIO +"("+Utilidades.USUARIO_USERNAME+") ON DELETE CASCADE"
+                + " FOREIGN KEY("+Utilidades.USUARIO_A_USERNAME+") REFERENCES "+ Utilidades.BD_TABLA_USUARIO +"("+Utilidades.USUARIO_ID +") ON DELETE CASCADE"
                 + ")";
 
 
@@ -53,9 +55,9 @@ public class BD_Controller extends SQLiteOpenHelper {
                 + Utilidades.PERFILES_TIEMPO_DESCANSO + " INTEGER NOT NULL,"
                 + Utilidades.PERFILES_TIEMPO_PREPARACION + " INTEGER,"
                 + Utilidades.PERFILES_RONDAS + " INTEGER,"
-                + Utilidades.PERFILES_USERNAME + " VARCHAR UNIQUE,"
+                + Utilidades.PERFILES_USERNAME + " INTEGER UNIQUE,"
                 + " CONSTRAINT fk_"+Utilidades.PERFILES_USERNAME
-                + " FOREIGN KEY("+ Utilidades.PERFILES_USERNAME+") REFERENCES " + Utilidades.BD_TABLA_USUARIO + "(" + Utilidades.USUARIO_USERNAME + ") ON DELETE CASCADE"
+                + " FOREIGN KEY("+ Utilidades.PERFILES_USERNAME+") REFERENCES " + Utilidades.BD_TABLA_USUARIO + "(" + Utilidades.USUARIO_ID + ") ON DELETE CASCADE"
                 + ")";
 
         db.execSQL(CREA_TABLA_PERFILES);
@@ -80,9 +82,9 @@ public class BD_Controller extends SQLiteOpenHelper {
                 + Utilidades.ESTADISTICAS_TOTAL_TRABAJO + " INTEGER,"
                 + Utilidades.ESTADISTICAS_TOTAL_DESCANSO + " INTEGER,"
                 + Utilidades.ESTADISTICAS_TOTAL_RONDAS + " INTEGER,"
-                + Utilidades.ESTADISTICAS_USERNAME + " VARCHAR NOT NULL UNIQUE,"
+                + Utilidades.ESTADISTICAS_USERNAME + " INTEGER NOT NULL UNIQUE,"
                 + " CONSTRAINT fk_" + Utilidades.ESTADISTICAS_USERNAME
-                + " FOREIGN KEY(" + Utilidades.ESTADISTICAS_USERNAME + ") REFERENCES " + Utilidades.BD_TABLA_USUARIO + "(" + Utilidades.USUARIO_USERNAME + " ) ON DELETE CASCADE"
+                + " FOREIGN KEY(" + Utilidades.ESTADISTICAS_USERNAME + ") REFERENCES " + Utilidades.BD_TABLA_USUARIO + "(" + Utilidades.USUARIO_ID + " ) ON DELETE CASCADE"
                 + ")";
 
         db.execSQL(CREA_TABLA_ESTADISTICAS);

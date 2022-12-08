@@ -1,17 +1,19 @@
 package com.timesplit.modelo;
 
 public class Usuario {
-    private String nombre_usuario;
+    private int id_usuario;
     private String password;
-    private String nombre_completo;
+    private String nombre;
+    private String apellidos;
     private String email;
 
     // Constructores
-    public Usuario(String username, String password, String nombre, String email){
-        this.nombre_usuario =username;
-        this.password=password;
-        this.nombre_completo =nombre;
-        this.email=email;
+    public Usuario(int id_usuario, String password, String nombre, String apellidos, String email) {
+        this.id_usuario = id_usuario;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
     }
 
     public Usuario(){
@@ -19,12 +21,12 @@ public class Usuario {
 
 
     // Metodos de acceso
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getPassword() {
@@ -35,12 +37,20 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getNombre_completo() {
-        return nombre_completo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_completo(String nombre_completo) {
-        this.nombre_completo = nombre_completo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getEmail() {

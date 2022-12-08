@@ -8,9 +8,10 @@ public class Utilidades {
 
     //Tabla usuario
     public static final String BD_TABLA_USUARIO = "usuario";
-    public static final String USUARIO_USERNAME = "nombre_usuario";
+    public static final String USUARIO_ID = "id_usuario";
     public static final String USUARIO_PASS = "password";
-    public static final String USUARIO_NOMBRE = "nombre_completo";
+    public static final String USUARIO_NOMBRE = "nombre";
+    public static final String USUARIO_APELLIDOS = "apellidos";
     public static final String USUARIO_EMAIL = "email";
 
     //Tabla ajustes_usuario

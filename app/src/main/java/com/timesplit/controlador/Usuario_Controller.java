@@ -32,15 +32,17 @@ public class Usuario_Controller extends SQLiteOpenHelper {
 
         // Guarda atributos usuario
         ContentValues valores = new ContentValues();
-        valores.put(Utilidades.USUARIO_USERNAME, usuario.getNombre_usuario());
+        valores.put(Utilidades.USUARIO_ID, usuario.getId_usuario());
         valores.put(Utilidades.USUARIO_PASS, usuario.getPassword());
-        valores.put(Utilidades.USUARIO_NOMBRE, usuario.getNombre_completo());
+        valores.put(Utilidades.USUARIO_NOMBRE, usuario.getNombre());
+        valores.put(Utilidades.USUARIO_APELLIDOS, usuario.getApellidos());
         valores.put(Utilidades.USUARIO_EMAIL, usuario.getEmail());
 
         // Inserta el usuario en la BD
         return db.insert(Utilidades.BD_TABLA_USUARIO, null, valores);
     }
 
+    // TODO -> MODIFICAR FKS a ID USUARIO EN LUGAR DE USERNAME
     public long insertAjustesUsuario(AjustesUsuario a_usuario){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -53,14 +55,14 @@ public class Usuario_Controller extends SQLiteOpenHelper {
         return db.insert(Utilidades.BD_TABLA_A_USUARIO, null, valores);
     }
 
-    public Usuario selectUsuario (String nombre_usuario) {
+    public Usuario selectUsuario (int id_usuario) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Crea cursor
         //Utilizando query() utilizaremos los parametros para crear una sentencia SQL
         Cursor cursor = db.query(Utilidades.BD_TABLA_USUARIO,
-                new String[]{Utilidades.USUARIO_USERNAME, Utilidades.USUARIO_PASS, Utilidades.USUARIO_NOMBRE, Utilidades.USUARIO_EMAIL},
-                Utilidades.USUARIO_USERNAME+"=?",new String[]{nombre_usuario},
+                new String[]{Utilidades.USUARIO_ID, Utilidades.USUARIO_PASS, Utilidades.USUARIO_NOMBRE, Utilidades.USUARIO_EMAIL},
+                Utilidades.USUARIO_ID+"=?",new String[]{id_usuario+""},
                 null,null,null);
 
         //Si tiene datos, va a la primera posicion
@@ -69,20 +71,21 @@ public class Usuario_Controller extends SQLiteOpenHelper {
 
         // Crea usuario con los atributos que recupera el cursor
         Usuario usuario = new Usuario();
-        usuario.setNombre_usuario((cursor.getString(0)));
+        usuario.setId_usuario((cursor.getInt(0)));
         usuario.setPassword((cursor.getString(1)));
-        usuario.setNombre_completo((cursor.getString(2)));
-        usuario.setEmail((cursor.getString(3)));
+        usuario.setNombre((cursor.getString(2)));
+        usuario.setApellidos((cursor.getString(3)));
+        usuario.setEmail((cursor.getString(4)));
 
         return usuario;
     }
 
-    public AjustesUsuario selectAjustesUsuario (String nombre_usuario) {
+    public AjustesUsuario selectAjustesUsuario (int id_usuario) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(Utilidades.BD_TABLA_A_USUARIO,
                 new String[]{Utilidades.USUARIO_A_ID, Utilidades.USUARIO_A_TEMA, Utilidades.USUARIO_A_SONIDO, Utilidades.USUARIO_A_VOLUMEN, Utilidades.USUARIO_A_USERNAME},
-                Utilidades.USUARIO_A_USERNAME+"=?",new String[]{nombre_usuario},
+                Utilidades.USUARIO_A_USERNAME+"=?",new String[]{id_usuario+""},
                 null,null,null);
 
         if(cursor != null)
@@ -104,14 +107,14 @@ public class Usuario_Controller extends SQLiteOpenHelper {
 
         // Almacena los atributos del usuario pasado por parametro en una coleccion de valores
         ContentValues valores = new ContentValues();
-        valores.put(Utilidades.USUARIO_USERNAME, usuario.getNombre_usuario());
+        valores.put(Utilidades.USUARIO_ID, usuario.getId_usuario());
         valores.put(Utilidades.USUARIO_PASS, usuario.getPassword());
-        valores.put(Utilidades.USUARIO_NOMBRE, usuario.getNombre_completo());
+        valores.put(Utilidades.USUARIO_NOMBRE, usuario.getNombre());
         valores.put(Utilidades.USUARIO_EMAIL, usuario.getEmail());
 
         // retorna un int (-1 si no se pudo actualizar, o la posición que se actualizó)
-        return db.update(Utilidades.BD_TABLA_USUARIO, valores, Utilidades.USUARIO_USERNAME+"=?",
-                new String[]{usuario.getNombre_usuario()});
+        return db.update(Utilidades.BD_TABLA_USUARIO, valores, Utilidades.USUARIO_ID+"=?",
+                new String[]{usuario.getId_usuario()+""});
     }
 
     public int updateAjustesUsuario(AjustesUsuario a_usuario){
@@ -134,8 +137,8 @@ public class Usuario_Controller extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // Retorna un int (-1 si no se pudo borrar, o la posición borrada
-        return db.delete(Utilidades.BD_TABLA_USUARIO, Utilidades.USUARIO_USERNAME+"=?",
-                new String[]{usuario.getNombre_usuario()});
+        return db.delete(Utilidades.BD_TABLA_USUARIO, Utilidades.USUARIO_ID+"=?",
+                new String[]{usuario.getId_usuario()+""});
     }
 
 }
