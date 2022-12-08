@@ -91,6 +91,7 @@
                 style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
                 android:hint="Trabajo"
                 app:boxCornerRadiusTopStart="10dp">
 
@@ -109,6 +110,7 @@
                 style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
                 android:hint="Descanso">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -126,6 +128,7 @@
                 style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
                 android:hint="Preparacion">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -143,6 +146,7 @@
                 style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:endIconMode="clear_text"
                 android:hint="Rondas"
                 app:boxCornerRadiusBottomEnd="10dp">
 
@@ -163,9 +167,9 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
-                app:icon="@drawable/logotimesplit"
+                app:icon="@drawable/ic_baseline_play_arrow_24"
                 app:iconGravity="textStart"
-                app:iconSize="35dp" />
+                app:iconSize="50dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -187,7 +191,6 @@
         android:id="@+id/textView_TimeSplit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:fontFamily="@font/timesplit"
         android:gravity="center_horizontal"
         android:text="Time.Split"

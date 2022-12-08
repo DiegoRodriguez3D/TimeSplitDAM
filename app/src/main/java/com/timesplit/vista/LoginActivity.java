@@ -10,7 +10,7 @@ import com.timesplit.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button iconButton_HomeMenu, iconButton_Back, button_Login, textButton_Registrarme;
+    private Button iconButton_Home, iconButton_Back, button_Login, textButton_Registrarme;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Ajustes
-        iconButton_HomeMenu = findViewById(R.id.iconButton_HomeMenu);
-        iconButton_HomeMenu.setOnClickListener(h -> {
-            Intent intent = new Intent(LoginActivity.this, com.timesplit.vista.MenuActivity.class);
+        iconButton_Home = findViewById(R.id.iconButton_Home);
+        iconButton_Home.setOnClickListener(h -> {
+            Intent intent = new Intent(LoginActivity.this, com.timesplit.vista.MainActivity.class);
             startActivity(intent);
         });
 

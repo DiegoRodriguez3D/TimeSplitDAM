@@ -6,8 +6,8 @@ public class TODO {
     //              Nuevo Perfil,
     //              Avanzado,
     //              Estadisticas,
-    //              PerfilUsuario,
-    //              Cambiar Password,
+    //              V - PerfilUsuario,
+    //              V - Cambiar Password,
     //              Timer
 
 
@@ -25,6 +25,9 @@ public class TODO {
 
     // TODO -> Implementar formato campos de tiempo MM:SS
 
-    // TODO -> Pulir diseño
+    // TODO -> Pulir diseño:
+    //         - Si se logea un usuario, en Ajustes aparece el boton LogOut y se oculta Login y viceversa
+    //         - Si logea un usuario, aparece su nombre en la parte superior del HOME
+
 
 }

@@ -19,12 +19,18 @@ public class MenuActivity extends AppCompatActivity {
 
 
         //Databinding
-        iconButton_Back = findViewById(R.id.iconButton_Back);
-        textButton_Usuario = findViewById(R.id.textButton_Usuario);
+
+
         textButton_Estadisticas = findViewById(R.id.textButton_Estadisticas);
-        iconButton_Home = findViewById(R.id.iconButton_Home);
 
 
+
+        //Usuario
+        textButton_Usuario = findViewById(R.id.textButton_Usuario);
+        textButton_Usuario.setOnClickListener(l -> {
+            Intent intent = new Intent(MenuActivity.this, com.timesplit.vista.AjustesUsuarioActivity.class);
+            startActivity(intent);
+        });
 
         //Login
         textButton_Login = findViewById(R.id.textButton_Login);
@@ -34,13 +40,14 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
-
         //Back
+        iconButton_Back = findViewById(R.id.iconButton_Back);
         iconButton_Back.setOnClickListener(h -> {
            finish();
         });
 
         //Home
+        iconButton_Home = findViewById(R.id.iconButton_Home);
         iconButton_Home.setOnClickListener(h -> {
             Intent intent = new Intent(MenuActivity.this, com.timesplit.vista.MainActivity.class);
             startActivity(intent);

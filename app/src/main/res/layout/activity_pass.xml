@@ -4,51 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.LoginActivity">
-
-    <Button
-        android:id="@+id/filledButton_Login"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
-        android:text="LOGIN"
-        app:cornerRadius="@dimen/redondeoEsquinas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/TextButton_LayoutLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/filledButton_Login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/textButton_LoginRegistrarme"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Registrarme"
-            android:textAlignment="center"
-            android:textColor="@color/text"
-            android:textSize="20sp"
-            app:cornerRadius="5dp" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/textButton_barLogin"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            app:cardBackgroundColor="?android:attr/textColorLink" />
-    </LinearLayout>
+    tools:context=".vista.PassActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -93,11 +49,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView_TituloLogin"
+        android:id="@+id/textView_TituloPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-thin"
-        android:text="LOGIN"
+        android:text="Contraseña"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="48sp"
@@ -111,46 +67,65 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="200dp"
         android:orientation="vertical"
         android:outlineProvider="none"
         android:padding="@dimen/PaddingWrapper"
-        app:layout_constraintBottom_toTopOf="@+id/TextButton_LayoutLogin"
+        app:layout_constraintBottom_toTopOf="@+id/filledButton_Pass_Guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField_email"
+            android:id="@+id/outlinedTextField_Pass_OldPass"
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:endIconMode="clear_text"
-            android:hint="Email"
-            app:boxCornerRadiusTopStart="10dp">
+            android:hint="Contraseña actual"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_email"
+                android:id="@+id/EditText_Pass_oldPass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:singleLine="true" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField_pass"
+            android:id="@+id/outlinedTextField_Pass_NewPass"
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:endIconMode="password_toggle"
-            app:boxCornerRadiusBottomEnd="10dp"
-            android:hint="Contraseña">
+            android:hint="Nueva Contraseña"
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_pass"
+                android:id="@+id/EditText_Pass_newPass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_Pass_RepeatNewPass"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Repita nueva contraseña"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EditText_Pass_repeatNewPass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -161,4 +136,16 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/filledButton_Pass_Guardar"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:text="GUARDAR"
+        app:cornerRadius="@dimen/redondeoEsquinas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

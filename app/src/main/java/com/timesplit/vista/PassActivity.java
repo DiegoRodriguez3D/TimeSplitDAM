@@ -8,13 +8,12 @@ import android.widget.Button;
 
 import com.timesplit.R;
 
-public class RegisterActivity extends AppCompatActivity {
+public class PassActivity extends AppCompatActivity {
 private Button iconButton_Back, iconButton_Home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-
+        setContentView(R.layout.activity_pass);
 
 
         //Back
@@ -23,13 +22,11 @@ private Button iconButton_Back, iconButton_Home;
             finish();
         });
 
-        // Ajustes
+        // Home
         iconButton_Home = findViewById(R.id.iconButton_Home);
         iconButton_Home.setOnClickListener(h -> {
-            Intent intent = new Intent(RegisterActivity.this, com.timesplit.vista.MainActivity.class);
+            Intent intent = new Intent(PassActivity.this, com.timesplit.vista.MainActivity.class);
             startActivity(intent);
         });
-
-
     }
 }
