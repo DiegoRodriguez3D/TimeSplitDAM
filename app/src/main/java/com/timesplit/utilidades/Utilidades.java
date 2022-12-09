@@ -20,7 +20,7 @@ public class Utilidades {
     public static final String USUARIO_A_TEMA = "tema";
     public static final String USUARIO_A_SONIDO = "sonido";
     public static final String USUARIO_A_VOLUMEN = "volumen";
-    public static final String USUARIO_A_USERNAME = "nombre_usuario";
+    public static final String USUARIO_A_USERID = "id_usuario";
 
     //Tabla perfiles
     public static final String BD_TABLA_PERFILES = "perfiles";
@@ -30,7 +30,7 @@ public class Utilidades {
     public static final String PERFILES_TIEMPO_DESCANSO = "tiempo_descanso";
     public static final String PERFILES_TIEMPO_PREPARACION = "tiempo_preparacion";
     public static final String PERFILES_RONDAS = "rondas";
-    public static final String PERFILES_USERNAME = "nombre_usuario";
+    public static final String PERFILES_USERID = "id_usuario";
 
     //Tabla perfiles_ajustes
     public static final String BD_TABLA_PERFILES_AJUSTES = "perfiles_ajustes";
@@ -48,6 +48,6 @@ public class Utilidades {
     public static final String ESTADISTICAS_TOTAL_TRABAJO = "total_trabajo";
     public static final String ESTADISTICAS_TOTAL_DESCANSO = "total_descanso";
     public static final String ESTADISTICAS_TOTAL_RONDAS = "total_rondas";
-    public static final String ESTADISTICAS_USERNAME = "nombre_usuario";
+    public static final String ESTADISTICAS_USERID = "id_usuario";
 
 }

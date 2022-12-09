@@ -42,9 +42,9 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
         Perfil perfil = listaPerfiles.get(position);
         //A través del holder accedemos a los datos de cada perfil y los pasamos a cada textview del layout una vez hacemos el databinding en ViewHolder
         holder.nombrePerfil.setText(perfil.getNombre_perfil());
-        holder.tiempoTrabajo.setText(perfil.getTiempo_trabajo());
-        holder.tiempoDescanso.setText(perfil.getTiempo_descanso());
-        holder.numeroRondas.setText(perfil.getRondas());
+        holder.tiempoTrabajo.setText(perfil.getTiempo_trabajo()+"");
+        holder.tiempoDescanso.setText(perfil.getTiempo_descanso()+"");
+        holder.numeroRondas.setText(perfil.getRondas()+"");
 
     }
 

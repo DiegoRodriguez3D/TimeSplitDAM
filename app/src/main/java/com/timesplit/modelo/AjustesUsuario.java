@@ -5,15 +5,15 @@ public class AjustesUsuario {
     private int tema;
     private int sonido;
     private int volumen;
-    private String nombre_usuario;
+    private int id_usuario;
 
     //Constructores
-    public AjustesUsuario(int id_ajustes, int tema, int sonido, int volumen, String nombre_usuario) {
+    public AjustesUsuario(int id_ajustes, int tema, int sonido, int volumen, int id_usuario) {
         this.id_ajustes = id_ajustes;
         this.tema = tema;
         this.sonido = sonido;
         this.volumen = volumen;
-        this.nombre_usuario = nombre_usuario;
+        this.id_usuario = id_usuario;
     }
 
     public AjustesUsuario(){
@@ -21,7 +21,6 @@ public class AjustesUsuario {
     }
 
     //Metodos de acceso
-
     public int getId_ajustes() {
         return id_ajustes;
     }
@@ -54,11 +53,11 @@ public class AjustesUsuario {
         this.volumen = volumen;
     }
 
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 }

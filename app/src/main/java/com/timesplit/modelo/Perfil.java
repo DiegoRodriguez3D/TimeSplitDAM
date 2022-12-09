@@ -7,17 +7,17 @@ private int tiempo_trabajo;
 private int tiempo_descanso;
 private int tiempo_preparacion;
 private int rondas;
-private String nombre_usuario;
+private int id_usuario;
 
 //Constructores
-    public Perfil(int id_perfil, String nombre_perfil, int tiempo_trabajo, int tiempo_descanso, int tiempo_preparacion, int rondas, String nombre_usuario) {
+    public Perfil(int id_perfil, String nombre_perfil, int tiempo_trabajo, int tiempo_descanso, int tiempo_preparacion, int rondas, int id_usuario) {
         this.id_perfil = id_perfil;
         this.nombre_perfil = nombre_perfil;
         this.tiempo_trabajo = tiempo_trabajo;
         this.tiempo_descanso = tiempo_descanso;
         this.tiempo_preparacion = tiempo_preparacion;
         this.rondas = rondas;
-        this.nombre_usuario = nombre_usuario;
+        this.id_usuario = id_usuario;
     }
 
     public Perfil() {
@@ -72,11 +72,11 @@ private String nombre_usuario;
         this.rondas = rondas;
     }
 
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 }

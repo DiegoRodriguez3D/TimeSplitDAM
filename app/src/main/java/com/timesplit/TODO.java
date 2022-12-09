@@ -6,16 +6,9 @@ public class TODO {
     //              Nuevo Perfil,
     //              Avanzado,
     //              Estadisticas,
-    //              V - PerfilUsuario,
-    //              V - Cambiar Password,
     //              Timer
 
-
-    // TODO -> MODIFICAR TABLAS FK A USUARIO_ID y cambiar tipo de datos de fk de String a int
-
-    // TODO -> TEST BD SQLITE comprobar que
-    //              Inserta datos (datos prueba)
-    //              Los recupera en TODAS LAS TABLAS
+    // TODO -> Test tablas BD ajustes y estadisticas
 
     // TODO -> CREAR AuthController que controle el registro y el logeo (check contraseñas registro, check email y contraseña login, recuperar id a traves del correo, check password en cambiar password etc)
 

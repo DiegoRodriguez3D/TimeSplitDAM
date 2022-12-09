@@ -1,9 +1,17 @@
 package com.timesplit.vista;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+
+import com.timesplit.controlador.Auth_Controller;
+import com.timesplit.controlador.Perfil_Controller;
+import com.timesplit.controlador.Usuario_Controller;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,14 +21,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.timesplit.R;
 import com.timesplit.controlador.BD_Controller;
+import com.timesplit.controlador.Usuario_Controller;
+import com.timesplit.modelo.Perfil;
+import com.timesplit.modelo.Usuario;
+import com.timesplit.utilidades.Utilidades;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button iconButton_PlayQuickStart, button_perfiles, iconButton_HomeMenu;
     private TextInputEditText EditText_trabajo, EditText_descanso, EditText_preparacion, EditText_rondas;
-
-
-
+    private TextView textView_HomeUserName;
+    public static Usuario userLog;
+    private SharedPreferences sp;
 
     public static int estado = 0;
 
@@ -38,7 +52,24 @@ public class MainActivity extends AppCompatActivity {
         EditText_descanso = findViewById(R.id.EditText_descanso);
         EditText_preparacion = findViewById(R.id.EditText_preparacion);
         EditText_rondas = findViewById(R.id.EditText_rondas);
+        textView_HomeUserName = findViewById(R.id.textView_HomeUserName);
 
+        //Accede a las SharedPreferences para recuperar la informacion del usuario logeado, si no existe se reinicia
+        sp = getSharedPreferences(Auth_Controller.Login, Context.MODE_PRIVATE);
+        Auth_Controller.userLog.setId_usuario(sp.getInt(Auth_Controller.ID, 0));
+        Auth_Controller.userLog.setEmail(sp.getString(Auth_Controller.Email, ""));
+        Auth_Controller.userLog.setNombre(sp.getString(Auth_Controller.Nombre, ""));
+        Auth_Controller.userLog.setApellidos(sp.getString(Auth_Controller.Apellidos, ""));
+
+        //Muestra el nombre del usuario en la parte superior
+        textView_HomeUserName.setText( Auth_Controller.userLog.getNombre());
+
+        //Si no hay usuario logeado, oculta el boton Perfiles
+        if(Auth_Controller.userLog.getId_usuario()==0){
+            button_perfiles.setVisibility(View.INVISIBLE);
+        }else{
+            button_perfiles.setVisibility(View.VISIBLE);
+        }
 
 
         //INSERTAR
@@ -118,13 +149,64 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //TEST CONTACTOS
-        //Lista por consola los contactos almacenados al iniciar la aplicacion
-//        List<Contacto> listaContactos = db.devuelveListaContactos();
-//
-//        for(Contacto contacto: listaContactos){
-//            Log.d("MAIN", "Datos devueltos: " + contacto.getNombre() + " - " + contacto.getTelefono() + " - " + contacto.getEmail());
-//        }
+        // TODO: --------------- TEST BD --------------------
+        //TEST USUARIO
+        Usuario testUser = new Usuario();
+        testUser.setEmail("test@mail.com");
+        testUser.setPassword("Abc1234.");
+        testUser.setNombre("Sara");
+        testUser.setApellidos("Rial");
+
+        Usuario testUser2 = new Usuario();
+        testUser2.setEmail("test2@mail.com");
+        testUser2.setPassword("Abc1234.");
+        testUser2.setNombre("Diego");
+        testUser2.setApellidos("Rodriguez");
+
+
+        Usuario_Controller.insertUsuario(testUser, db.getWritableDatabase());
+        Usuario_Controller.insertUsuario(testUser2, db.getWritableDatabase());
+
+        //Lista por consola los usuarios almacenados al iniciar la aplicacion
+        List<Usuario> listaUsuarios = Usuario_Controller.listaUsuarios(db.getReadableDatabase());
+
+        for(Usuario usuario: listaUsuarios){
+            Log.d("testBD", "USUARIO ID: " + usuario.getId_usuario() + " - Email: " + usuario.getEmail() + " - Pass: " + usuario.getPassword()
+            + " - Nombre: " + usuario.getNombre() + " - Apellidos: " + usuario.getApellidos());
+        }
+
+
+        Usuario testPerfilUsuario = Usuario_Controller.selectUsuarioByMail("test@mail.com", db.getReadableDatabase());
+        Log.d("testBD", "USUARIOEMAIL: " + testPerfilUsuario.getEmail() + " - ID: " + testPerfilUsuario.getId_usuario());
+
+        // TEST PERFILES
+        Perfil testPerfil = new Perfil();
+        testPerfil.setNombre_perfil("Estudiar");
+        testPerfil.setTiempo_trabajo(60000);
+        testPerfil.setTiempo_descanso(30000);
+        testPerfil.setTiempo_preparacion(1000);
+        testPerfil.setRondas(3);
+        testPerfil.setId_usuario(testPerfilUsuario.getId_usuario());
+
+        Perfil testPerfil2 = new Perfil();
+        testPerfil2.setNombre_perfil("Boxear");
+        testPerfil2.setTiempo_trabajo(60000);
+        testPerfil2.setTiempo_descanso(30000);
+        testPerfil2.setTiempo_preparacion(1000);
+        testPerfil2.setRondas(3);
+        testPerfil2.setId_usuario(testPerfilUsuario.getId_usuario());
+
+        Perfil_Controller.insertPerfil(testPerfil, db.getWritableDatabase());
+        Perfil_Controller.insertPerfil(testPerfil2, db.getWritableDatabase());
+
+        //Lista por consola los usuarios almacenados al iniciar la aplicacion
+        List<Perfil> listaPerfiles = Perfil_Controller.listaPerfiles(testPerfilUsuario.getId_usuario(), db.getReadableDatabase());
+
+        for(Perfil perfil: listaPerfiles){
+            Log.d("testBD", "PERFIL ID: " + perfil.getId_perfil() + " - Nombre: " + perfil.getNombre_perfil() + " - Trabajo: " + perfil.getTiempo_trabajo()
+                    + " - Descanso: " + perfil.getTiempo_descanso() + " - Preparacion: " + perfil.getTiempo_preparacion() + " - Rondas: " + perfil.getRondas() + " - Usuario: " + perfil.getId_usuario());
+        }
+
     }
 
     //Vacía todos los campos

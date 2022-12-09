@@ -1,6 +1,8 @@
 package com.timesplit.modelo;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     private int id_usuario;
     private String password;
     private String nombre;
@@ -10,10 +12,10 @@ public class Usuario {
     // Constructores
     public Usuario(int id_usuario, String password, String nombre, String apellidos, String email) {
         this.id_usuario = id_usuario;
+        this.email = email;
         this.password = password;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.email = email;
     }
 
     public Usuario(){

@@ -5,11 +5,15 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.timesplit.R;
+import com.timesplit.controlador.Auth_Controller;
+import com.timesplit.controlador.BD_Controller;
+import com.timesplit.controlador.Perfil_Controller;
 import com.timesplit.modelo.Contacto;
 import com.timesplit.modelo.Perfil;
 
@@ -28,18 +32,19 @@ public class PerfilesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_perfiles);
-        com.timesplit.controlador.BD_Controller db = new com.timesplit.controlador.BD_Controller(PerfilesActivity.this);
+        BD_Controller db = new BD_Controller(PerfilesActivity.this);
 
         //Prepara recyclerView
         recyclerView_perfiles = findViewById(R.id.recyclerView_perfiles);
 
         //Prepara listaContactos
-//        listaPerfiles = db.devuelveListaPerfiles();
-        listaPerfiles = null;
+        listaPerfiles = Perfil_Controller.listaPerfiles(Auth_Controller.userLog.getId_usuario(), db.getReadableDatabase());
 
         //Actualiza el layout del recyclerView cada vez que se actualiza la lista de contactos
         recyclerView_perfiles.setHasFixedSize(true);
-        recyclerView_perfiles.setLayoutManager(new LinearLayoutManager(this));
+
+        //Establece el layout de la lista
+        recyclerView_perfiles.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView_perfiles.setVerticalScrollBarEnabled(true);
 
         // Si el usuario tiene perfiles creados los muestra
@@ -51,11 +56,10 @@ public class PerfilesActivity extends AppCompatActivity {
             recyclerView_perfiles.setAdapter(recyclerView_adapter);
         }
 
-
-        // ADD
+        //Nuevo Perfil
         button_add = findViewById(R.id.floatingActionButton_Add);
         button_add.setOnClickListener(a -> {
-//            addPerfil();
+            // TODO -> INTENT NuevoPerfil
         });
 
         //Back
@@ -70,14 +74,5 @@ public class PerfilesActivity extends AppCompatActivity {
             Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.MenuActivity.class);
             startActivity(intent);
         });
-
-
-
-        //VOLVER
-//        button_volver = findViewById(R.id.button_volver);
-//        button_volver.setOnClickListener(v -> {
-//            finish();
-//        });
     }
-
 }
