@@ -3,6 +3,8 @@
     <color name="seed">#325D79</color>
     <color name="black">#232323</color>
     <color name="white">#F3F3F3</color>
+    <color name="lightTrack">#EAEAEA</color>
+    <color name="darkTrack">#272727</color>
     <color name="md_theme_light_primary">#BF0028</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#FFDAD8</color>

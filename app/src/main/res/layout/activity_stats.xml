@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista.StatsActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="vertical"
+        android:outlineProvider="none"
+        android:padding="@dimen/PaddingWrapper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_TituloStats">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_Stats_numeroPerfiles"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número de perfiles"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_source_24"
+            app:startIconTint="?attr/textFillColor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EditText_Opciones_Nombre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:enabled="false"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:textColor="?attr/textFillColor"
+                android:textColorHighlight="?attr/textFillColor"
+                android:textColorHint="?attr/textFillColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_Stats_tiempoTrabajo"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Total de tiempo trabajado"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_timer_24"
+            app:startIconTint="?attr/textFillColor"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/EditText_Stats_trabajo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:enabled="false"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="time"
+                android:textColor="?attr/textFillColor"
+                app:mask="@string/mask_tiempo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_Stats_tiempoDescanso"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Total de tiempo descansado"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_bedtime_24"
+            app:startIconTint="?attr/textFillColor"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/EditText_Stats_Descanso"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:enabled="false"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="time"
+                android:textColor="?attr/textFillColor"
+                app:mask="@string/mask_tiempo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_Stats_Rondas"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Total de rondas"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_timeline_24"
+            app:startIconTint="?attr/textFillColor"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/EditText_Stats_Rondas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:enabled="false"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="time"
+                android:textColor="?attr/textFillColor"
+                app:mask="@string/mask_tiempo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_TituloStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/muli_black"
+        android:text="ESTADÍSTICAS"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="?attr/textFillColor"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/iconButton_Home"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:isScrollContainer="false"
+            app:icon="@drawable/ic_round_home_24"
+            app:iconSize="25dp"
+            app:iconTint="?attr/textFillColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/iconButton_Back"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:isScrollContainer="false"
+            app:icon="@drawable/ic_baseline_arrow_back_ios_24"
+            app:iconSize="25dp"
+            app:iconTint="?attr/textFillColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

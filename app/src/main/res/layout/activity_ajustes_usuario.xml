@@ -211,6 +211,7 @@
                     app:tint="?attr/textFillColor" />
 
                 <com.google.android.material.slider.Slider
+                    android:id="@+id/Slider_Usuario_Volumen"
                     android:layout_width="250sp"
                     android:layout_height="wrap_content"
                     android:saveEnabled="false"
@@ -244,7 +245,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
         android:fontFamily="@font/muli_black"
-        android:text="GUARDAR"
+        android:text="@string/ButtonGuardar"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:cornerRadius="@dimen/redondeoEsquinas"

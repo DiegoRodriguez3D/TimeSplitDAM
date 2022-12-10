@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista.NewPerfilActivity">
+
+    <Button
+        android:id="@+id/filledButton_GuardarPerfil"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/muli_black"
+        android:text="@string/ButtonGuardar"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:cornerRadius="@dimen/redondeoEsquinas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/TextButton_NewPerfil_LayoutAvanzado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/filledButton_GuardarPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/textButton_NewPerfil_Avanzado"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/muli_semibold"
+            android:text="Ajustes Perfil"
+            android:textAlignment="center"
+            android:textColor="?attr/textFillColor"
+            android:textSize="20sp"
+            app:cornerRadius="5dp"
+            app:iconTint="?attr/textFillColor" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/textButton_barNewPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            app:cardBackgroundColor="?android:attr/textColorLink" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="vertical"
+        android:outlineProvider="none"
+        android:padding="@dimen/PaddingWrapper"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_TituloOpcionesUsuario2">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_Opciones_Nombre"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_person_24"
+            app:startIconTint="?attr/textFillColor">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EditText_Opciones_Nombre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:textSize="@dimen/textInputSize"
+                android:textColor="?attr/textFillColor"
+                android:textColorHighlight="?attr/textFillColor"
+                android:textColorHint="?attr/textFillColor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_NewPerfil_tiempoTrabajo"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Trabajo (minutos)"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_timer_24"
+            app:startIconTint="?attr/textFillColor"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/EditText_NewPerfil_trabajo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="time"
+                android:textColor="?attr/textFillColor"
+                android:textSize="@dimen/textInputSize"
+                app:mask="@string/mask_tiempo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_NewPerfil_tiempoDescanso"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descanso (minutos)"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_timer_24"
+            app:startIconTint="?attr/textFillColor"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/EditText_NewPerfil_descanso"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="time"
+                android:textColor="?attr/textFillColor"
+                android:textSize="@dimen/textInputSize"
+                app:mask="@string/mask_tiempo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_NewPerfil_tiempoPreparacion"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Preparación (minutos)"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_timer_24"
+            app:startIconTint="?attr/textFillColor"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/EditText_NewPerfil_preparacion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="time"
+                android:textColor="?attr/textFillColor"
+                android:textSize="@dimen/textInputSize"
+                app:mask="@string/mask_tiempo" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField_NewPerfil_numeroRondas"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_timeline_24"
+            app:startIconTint="?attr/textFillColor"
+            android:hint="Rondas"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:endIconMode="clear_text">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/EditText_NewPerfil_rondas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
+                android:inputType="number"
+                android:textSize="@dimen/textInputSize"
+                android:textColor="?attr/textFillColor"
+                app:mask="@string/mask_rondas"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_TituloOpcionesUsuario2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/muli_black"
+        android:text="NUEVO PERFIL"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="?attr/textFillColor"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/iconButton_Home"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:isScrollContainer="false"
+            app:icon="@drawable/ic_round_home_24"
+            app:iconSize="25dp"
+            app:iconTint="?attr/textFillColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/iconButton_Back"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:isScrollContainer="false"
+            app:icon="@drawable/ic_baseline_arrow_back_ios_24"
+            app:iconSize="25dp"
+            app:iconTint="?attr/textFillColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

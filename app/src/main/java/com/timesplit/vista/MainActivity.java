@@ -136,11 +136,18 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        //QuickStart Play
+        iconButton_PlayQuickStart = findViewById(R.id.iconButton_PlayQuickStart);
+        iconButton_PlayQuickStart.setOnClickListener(v -> {
+            // Crea intent para lanzar la activity con el listado de perfiles
+            Intent intent = new Intent(MainActivity.this, com.timesplit.vista.TimerActivity.class);
+            //Abre activity
+            startActivity(intent);
+        });
+
         //PERFILES
         button_perfiles.setOnClickListener(v -> {
-            // Crea intent para lanzar la activity con el listado de perfiles
             Intent intent = new Intent(MainActivity.this, com.timesplit.vista.PerfilesActivity.class);
-            //Abre activity
             startActivity(intent);
         });
 

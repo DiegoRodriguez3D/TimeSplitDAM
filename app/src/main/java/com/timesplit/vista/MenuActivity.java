@@ -26,7 +26,6 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         //Databinding
-        textButton_Estadisticas = findViewById(R.id.textButton_Estadisticas);
         TextButton_Layout = findViewById(R.id.TextButton_Layout);
         TextButton_Layout2 = findViewById(R.id.TextButton_Layout2);
         TextButton_Layout3 = findViewById(R.id.TextButton_Layout3);
@@ -36,6 +35,13 @@ public class MenuActivity extends AppCompatActivity {
         textButton_Usuario = findViewById(R.id.textButton_Usuario);
         textButton_Usuario.setOnClickListener(l -> {
             Intent intent = new Intent(MenuActivity.this, com.timesplit.vista.AjustesUsuarioActivity.class);
+            startActivity(intent);
+        });
+
+        //Estadisticas
+        textButton_Estadisticas = findViewById(R.id.textButton_Estadisticas);
+        textButton_Estadisticas.setOnClickListener(l -> {
+            Intent intent = new Intent(MenuActivity.this, com.timesplit.vista.StatsActivity.class);
             startActivity(intent);
         });
 
@@ -60,7 +66,6 @@ public class MenuActivity extends AppCompatActivity {
             Intent intent = new Intent(MenuActivity.this, com.timesplit.vista.MainActivity.class);
             startActivity(intent);
         });
-
 
         //Back
         iconButton_Back = findViewById(R.id.iconButton_Back);

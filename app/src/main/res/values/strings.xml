@@ -8,4 +8,8 @@
     <string name="errorNombre2">El nombre introducido no existe.</string>
     <string name="mask_tiempo">##:##</string>
     <string name="mask_rondas">##</string>
+    <string name="ButtonGuardar">GUARDAR</string>
+    <string name="ButtonRegistrar">REGISTRARME</string>
+    <string name="ButtonLogin">LOGIN</string>
+    <string name="ButtonAceptar">ACEPTAR</string>
 </resources>

@@ -59,13 +59,15 @@ public class PerfilesActivity extends AppCompatActivity {
         //Nuevo Perfil
         button_add = findViewById(R.id.floatingActionButton_Add);
         button_add.setOnClickListener(a -> {
-            // TODO -> INTENT NuevoPerfil
+            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.NewPerfilActivity.class);
+            startActivity(intent);
         });
 
         //Back
         iconButton_Back = findViewById(R.id.iconButton_Back);
         iconButton_Back.setOnClickListener(h -> {
-            finish();
+            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.MainActivity.class);
+            startActivity(intent);
         });
 
         // Ajustes
