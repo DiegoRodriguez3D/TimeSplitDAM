@@ -6,4 +6,6 @@
     <string name="errorNombre">El nombre introducido ya existe.</string>
     <string name="emptyNombre">Introduzca el nombre del contacto a eliminar.</string>
     <string name="errorNombre2">El nombre introducido no existe.</string>
+    <string name="mask_tiempo">##:##</string>
+    <string name="mask_rondas">##</string>
 </resources>

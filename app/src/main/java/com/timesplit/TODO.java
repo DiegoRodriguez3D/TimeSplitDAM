@@ -16,8 +16,6 @@ public class TODO {
 
     // TODO -> IMPLEMENTAR Activities y controladores, funcionalidad botones y campos
 
-    // TODO -> Implementar formato campos de tiempo MM:SS
-
     // TODO -> Pulir diseño:
     //         - Si se logea un usuario, en Ajustes aparece el boton LogOut y se oculta Login y viceversa
     //         - Si logea un usuario, aparece su nombre en la parte superior del HOME

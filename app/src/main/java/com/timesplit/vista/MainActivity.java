@@ -25,13 +25,14 @@ import com.timesplit.controlador.Usuario_Controller;
 import com.timesplit.modelo.Perfil;
 import com.timesplit.modelo.Usuario;
 import com.timesplit.utilidades.Utilidades;
+import com.vicmikhailau.maskededittext.MaskedEditText;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button iconButton_PlayQuickStart, button_perfiles, iconButton_HomeMenu;
-    private TextInputEditText EditText_trabajo, EditText_descanso, EditText_preparacion, EditText_rondas;
+    private MaskedEditText EditText_rondas, EditText_trabajo, EditText_descanso, EditText_preparacion;
     private TextView textView_HomeUserName;
     public static Usuario userLog;
     private SharedPreferences sp;
