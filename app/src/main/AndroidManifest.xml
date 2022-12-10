@@ -28,6 +28,10 @@
         <activity android:name=".vista.LoginActivity" />
         <activity android:name=".vista.AjustesUsuarioActivity" />
         <activity android:name=".vista.PassActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

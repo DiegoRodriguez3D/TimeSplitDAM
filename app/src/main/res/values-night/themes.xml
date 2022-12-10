@@ -1,5 +1,7 @@
 <resources>
     <style name="TimeSplit" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="textFillColor">@color/white</item>
+        <item name="iconTint">@color/white</item>
         <item name="colorPrimary">@color/md_theme_dark_primary</item>
         <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>

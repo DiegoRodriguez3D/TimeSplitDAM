@@ -25,7 +25,7 @@
             android:isScrollContainer="false"
             app:icon="@drawable/ic_round_home_24"
             app:iconSize="25dp"
-            app:iconTint="@color/text"
+            app:iconTint="?attr/textFillColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
             android:isScrollContainer="false"
             app:icon="@drawable/ic_baseline_arrow_back_ios_24"
             app:iconSize="25dp"
-            app:iconTint="@color/text"
+            app:iconTint="?attr/textFillColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,11 +51,14 @@
         android:id="@+id/textView_TituloOpcionesUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
-        android:text="Usuario"
-        android:textAlignment="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/muli_black"
+        android:text="USUARIO"
+        android:textAlignment="viewStart"
         android:textAllCaps="false"
-        android:textSize="48sp"
+        android:textColor="?attr/textFillColor"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:orientation="vertical"
         android:outlineProvider="none"
@@ -82,6 +85,10 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_person_24"
+            app:startIconTint="?attr/textFillColor"
             android:hint="Nombre"
             app:boxCornerRadiusTopStart="10dp"
             app:endIconMode="clear_text">
@@ -91,8 +98,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="textPersonName"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textColor="?attr/textFillColor"
+                android:textColorHighlight="?attr/textFillColor"
+                android:textColorHint="?attr/textFillColor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,6 +111,10 @@
             android:id="@+id/outlinedTextField_pass"
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_person_outline_24"
+            app:startIconTint="?attr/textFillColor"
             android:layout_height="wrap_content"
             android:hint="Apellidos"
             app:endIconMode="clear_text">
@@ -109,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="textPersonName"
                 android:singleLine="true" />
 
@@ -119,6 +135,10 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_email_24"
+            app:startIconTint="?attr/textFillColor"
             android:hint="Email"
             app:endIconMode="clear_text">
 
@@ -127,6 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="textEmailAddress"
                 android:singleLine="true" />
 
@@ -137,6 +158,11 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:endIconMode="clear_text"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_color_lens_24"
+            app:startIconTint="?attr/textFillColor"
             android:hint="Tema"
             app:boxCornerRadiusBottomEnd="10dp">
 
@@ -145,6 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="none"
                 android:singleLine="true"
                 app:endIconMode="dropdown_menu"
@@ -162,7 +189,10 @@
                 android:id="@+id/textView_Opciones_Volumen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Volumen" />
+                android:fontFamily="@font/muli_semibold"
+                android:text="Volumen"
+                android:textColor="?attr/textFillColor"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,21 +205,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:theme="@style/TimeSplit"
                     android:visibility="visible"
-                    app:srcCompat="@drawable/ic_round_volume_down_24" />
+                    app:srcCompat="@drawable/ic_round_volume_down_24"
+                    app:tint="?attr/textFillColor" />
 
                 <com.google.android.material.slider.Slider
                     android:layout_width="250sp"
                     android:layout_height="wrap_content"
-                    android:valueFrom="0.0"
-                    android:valueTo="100.0" />
+                    android:saveEnabled="false"
+                    android:soundEffectsEnabled="true"
+                    android:stepSize="1"
+                    android:theme="@style/TimeSplit"
+                    android:valueFrom="0"
+                    android:valueTo="100" />
 
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/ic_round_volume_up_24" />
+                    android:theme="@style/TimeSplit"
+                    app:srcCompat="@drawable/ic_round_volume_up_24"
+                    app:tint="?attr/textFillColor" />
 
             </LinearLayout>
 
@@ -205,7 +243,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
+        android:fontFamily="@font/muli_black"
         android:text="GUARDAR"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:cornerRadius="@dimen/redondeoEsquinas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -229,11 +270,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/muli_semibold"
             android:text="Cambiar Contraseña"
             android:textAlignment="center"
-            android:textColor="@color/text"
+            android:textColor="?attr/textFillColor"
             android:textSize="20sp"
-            app:cornerRadius="5dp" />
+            app:cornerRadius="5dp"
+            app:iconTint="?attr/textFillColor" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/textButton_barLogin"

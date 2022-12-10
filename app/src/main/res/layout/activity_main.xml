@@ -25,8 +25,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/muli_semibold"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="?attr/textFillColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +46,7 @@
                 app:icon="@drawable/ic_round_menu_24"
                 app:iconGravity="textStart"
                 app:iconSize="25dp"
-                app:iconTint="@color/text"
+                app:iconTint="?attr/textFillColor"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -69,6 +72,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?attr/colorOnBackground"
             android:orientation="vertical"
             android:outlineProvider="none"
             android:padding="@dimen/PaddingWrapper">
@@ -78,11 +82,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="sans-serif-thin"
-                android:text="QuickStart"
+                android:fontFamily="@font/muli_black"
+                android:text="QUICK START"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textSize="48sp" />
+                android:textColor="?attr/textFillColor"
+                android:textSize="40sp"
+                android:theme="@style/TimeSplit" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -90,9 +96,13 @@
                 style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text"
                 android:hint="Trabajo"
-                app:boxCornerRadiusTopStart="10dp">
+                app:endIconTint="?attr/textFillColor"
+                app:hintTextColor="?attr/textFillColor"
+                app:startIconDrawable="@drawable/ic_round_timer_24"
+                app:startIconTint="?attr/textFillColor"
+                app:boxCornerRadiusTopStart="10dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/EditText_trabajo"
@@ -109,8 +119,12 @@
                 style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text"
-                android:hint="Descanso">
+                app:endIconTint="?attr/textFillColor"
+                app:hintTextColor="?attr/textFillColor"
+                app:startIconDrawable="@drawable/ic_round_bedtime_24"
+                app:startIconTint="?attr/textFillColor"
+                android:hint="Descanso"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/EditText_descanso"
@@ -127,8 +141,12 @@
                 style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text"
-                android:hint="Preparacion">
+                app:endIconTint="?attr/textFillColor"
+                app:hintTextColor="?attr/textFillColor"
+                app:startIconDrawable="@drawable/ic_round_more_time_24"
+                app:startIconTint="?attr/textFillColor"
+                android:hint="Preparacion"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/EditText_preparacion"
@@ -145,9 +163,13 @@
                 style="?attr/textInputOutlinedDenseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:endIconMode="clear_text"
+                app:endIconTint="?attr/textFillColor"
+                app:hintTextColor="?attr/textFillColor"
+                app:startIconDrawable="@drawable/ic_round_timeline_24"
+                app:startIconTint="?attr/textFillColor"
                 android:hint="Rondas"
-                app:boxCornerRadiusBottomEnd="10dp">
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:endIconMode="clear_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/EditText_rondas"
@@ -168,7 +190,8 @@
                 android:layout_gravity="center_horizontal"
                 app:icon="@drawable/ic_baseline_play_arrow_24"
                 app:iconGravity="textStart"
-                app:iconSize="50dp" />
+                app:iconSize="50dp"
+                app:iconTint="@color/white" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -180,7 +203,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
+        android:fontFamily="@font/muli_black"
         android:text="PERFILES"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:cornerRadius="@dimen/redondeoEsquinas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -190,10 +216,12 @@
         android:id="@+id/textView_TimeSplit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/timesplit"
         android:gravity="center_horizontal"
         android:text="Time.Split"
-        android:textSize="58sp"
+        android:textColor="?attr/textFillColor"
+        android:textSize="60sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

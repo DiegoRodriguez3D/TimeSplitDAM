@@ -26,7 +26,7 @@
             app:icon="@drawable/ic_baseline_arrow_back_ios_24"
             app:iconGravity="textStart"
             app:iconSize="25dp"
-            app:iconTint="@color/text"
+            app:iconTint="?attr/textFillColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +41,7 @@
             android:isScrollContainer="false"
             app:icon="@drawable/ic_round_home_24"
             app:iconSize="25dp"
-            app:iconTint="@color/text"
+            app:iconTint="?attr/textFillColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,11 +52,14 @@
         android:id="@+id/textView_TituloPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
-        android:text="Contraseña"
-        android:textAlignment="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/muli_black"
+        android:text="CAMBIAR CONTRASEÑA"
+        android:textAlignment="viewStart"
         android:textAllCaps="false"
-        android:textSize="48sp"
+        android:textColor="?attr/textFillColor"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
@@ -66,15 +69,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="200dp"
         android:orientation="vertical"
         android:outlineProvider="none"
         android:padding="@dimen/PaddingWrapper"
-        app:layout_constraintBottom_toTopOf="@+id/filledButton_Pass_Guardar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_TituloPass">
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -84,6 +87,9 @@
             android:layout_height="wrap_content"
             android:hint="Contraseña actual"
             app:boxCornerRadiusTopStart="10dp"
+            app:startIconTint="?attr/textFillColor"
+            app:endIconTint="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_lock_24"
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -91,6 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="textPassword"
                 android:singleLine="true" />
 
@@ -101,6 +108,9 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_round_lock_24"
+            app:startIconTint="?attr/textFillColor"
+            app:endIconTint="?attr/textFillColor"
             android:hint="Nueva Contraseña"
             app:endIconMode="password_toggle">
 
@@ -109,6 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="textPassword"
                 android:singleLine="true" />
 
@@ -120,6 +131,9 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_round_lock_24"
+            app:startIconTint="?attr/textFillColor"
+            app:endIconTint="?attr/textFillColor"
             android:hint="Repita nueva contraseña"
             app:boxCornerRadiusBottomEnd="10dp"
             app:endIconMode="password_toggle">
@@ -129,6 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="textPassword"
                 android:singleLine="true" />
 
@@ -143,7 +158,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
+        android:fontFamily="@font/muli_black"
         android:text="GUARDAR"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:cornerRadius="@dimen/redondeoEsquinas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

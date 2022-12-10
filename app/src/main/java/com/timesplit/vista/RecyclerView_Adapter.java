@@ -42,9 +42,9 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
         Perfil perfil = listaPerfiles.get(position);
         //A través del holder accedemos a los datos de cada perfil y los pasamos a cada textview del layout una vez hacemos el databinding en ViewHolder
         holder.nombrePerfil.setText(perfil.getNombre_perfil());
-        holder.tiempoTrabajo.setText(perfil.getTiempo_trabajo()+"");
-        holder.tiempoDescanso.setText(perfil.getTiempo_descanso()+"");
-        holder.numeroRondas.setText(perfil.getRondas()+"");
+//        holder.tiempoTrabajo.setText(perfil.getTiempo_trabajo()+"");
+//        holder.tiempoDescanso.setText(perfil.getTiempo_descanso()+"");
+//        holder.numeroRondas.setText(perfil.getRondas()+"");
 
     }
 
@@ -56,18 +56,18 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
        public TextView nombrePerfil;
-       public TextView tiempoTrabajo;
-       public TextView tiempoDescanso;
-       public TextView numeroRondas;
+//       public TextView tiempoTrabajo;
+//       public TextView tiempoDescanso;
+//       public TextView numeroRondas;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             //Hacemos el databinding a través del itemView
             //Asignamos a los textView del layout fila_perfil
             nombrePerfil = itemView.findViewById(R.id.textView_nombre_perfil);
-            tiempoTrabajo = itemView.findViewById(R.id.textView_tiempoTrabajo);
-            tiempoDescanso = itemView.findViewById(R.id.textView_tiempoDescanso);
-            numeroRondas = itemView.findViewById(R.id.textView_numeroRondas);
+//            tiempoTrabajo = itemView.findViewById(R.id.textView_tiempoTrabajo);
+//            tiempoDescanso = itemView.findViewById(R.id.textView_tiempoDescanso);
+//            numeroRondas = itemView.findViewById(R.id.textView_numeroRondas);
 
         }
     }

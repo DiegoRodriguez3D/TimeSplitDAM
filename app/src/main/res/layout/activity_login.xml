@@ -13,7 +13,10 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
+        android:fontFamily="@font/muli_black"
         android:text="LOGIN"
+        android:textColor="@color/white"
+        android:textSize="24sp"
         app:cornerRadius="@dimen/redondeoEsquinas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,12 +27,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="208dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/filledButton_Login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <Button
             android:id="@+id/textButton_LoginRegistrarme"
@@ -37,9 +42,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/muli_semibold"
             android:text="Registrarme"
             android:textAlignment="center"
-            android:textColor="@color/text"
+            android:textColor="?attr/textFillColor"
             android:textSize="20sp"
             app:cornerRadius="5dp" />
 
@@ -70,7 +76,7 @@
             app:icon="@drawable/ic_baseline_arrow_back_ios_24"
             app:iconGravity="textStart"
             app:iconSize="25dp"
-            app:iconTint="@color/text"
+            app:iconTint="?attr/textFillColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -85,7 +91,7 @@
             android:isScrollContainer="false"
             app:icon="@drawable/ic_round_home_24"
             app:iconSize="25dp"
-            app:iconTint="@color/text"
+            app:iconTint="?attr/textFillColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -96,11 +102,14 @@
         android:id="@+id/textView_TituloLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/muli_black"
         android:text="LOGIN"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textAllCaps="false"
-        android:textSize="48sp"
+        android:textColor="?attr/textFillColor"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
@@ -110,15 +119,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="64dp"
         android:orientation="vertical"
         android:outlineProvider="none"
         android:padding="@dimen/PaddingWrapper"
-        app:layout_constraintBottom_toTopOf="@+id/TextButton_LayoutLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_TituloLogin">
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -126,15 +135,20 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:endIconMode="clear_text"
             android:hint="Email"
-            app:boxCornerRadiusTopStart="10dp">
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_email_24"
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="textEmailAddress"
                 android:singleLine="true" />
 
@@ -145,15 +159,20 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:endIconMode="password_toggle"
+            android:hint="Contraseña"
             app:boxCornerRadiusBottomEnd="10dp"
-            android:hint="Contraseña">
+            app:endIconMode="password_toggle"
+            app:endIconTint="?attr/textFillColor"
+            app:hintTextColor="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_lock_24"
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_pass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/muli_semibold"
                 android:inputType="textPassword"
                 android:singleLine="true" />
 

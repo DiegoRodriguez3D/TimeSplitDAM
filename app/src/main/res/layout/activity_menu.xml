@@ -25,7 +25,7 @@
             android:isScrollContainer="false"
             app:icon="@drawable/ic_round_home_24"
             app:iconSize="25dp"
-            app:iconTint="@color/text"
+            app:iconTint="?attr/textFillColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
             android:isScrollContainer="false"
             app:icon="@drawable/ic_baseline_arrow_back_ios_24"
             app:iconSize="25dp"
-            app:iconTint="@color/text"
+            app:iconTint="?attr/textFillColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:orientation="vertical"
         android:outlineProvider="none"
@@ -74,8 +74,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/muli_semibold"
                 android:text="Login"
-                android:textColor="@color/text"
+                android:textColor="?attr/textFillColor"
                 android:textSize="20sp"
                 app:cornerRadius="5dp" />
 
@@ -99,11 +100,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                app:cornerRadius="5dp"
+                android:fontFamily="@font/muli_semibold"
                 android:text="Usuario"
                 android:textAlignment="center"
-                android:textColor="@color/text"
-                android:textSize="20sp" />
+                android:textColor="?attr/textFillColor"
+                android:textSize="20sp"
+                app:cornerRadius="5dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/textButton_bar"
@@ -125,10 +127,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/muli_semibold"
                 android:text="Estadísticas"
-                android:textColor="@color/text"
-                app:cornerRadius="5dp"
-                android:textSize="20sp" />
+                android:textColor="?attr/textFillColor"
+                android:textSize="20sp"
+                app:cornerRadius="5dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/textButton_bar2"
@@ -150,10 +153,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/muli_semibold"
                 android:text="Logout"
-                android:textColor="@color/text"
-                app:cornerRadius="5dp"
-                android:textSize="20sp" />
+                android:textColor="?attr/textFillColor"
+                android:textSize="20sp"
+                app:cornerRadius="5dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/textButton_bar4"
@@ -168,11 +172,14 @@
         android:id="@+id/textView_Titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
-        android:text="Ajustes"
-        android:textAlignment="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/muli_black"
+        android:text="AJUSTES"
+        android:textAlignment="viewStart"
         android:textAllCaps="false"
-        android:textSize="48sp"
+        android:textColor="?attr/textFillColor"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />

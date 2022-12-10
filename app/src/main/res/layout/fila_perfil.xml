@@ -9,11 +9,11 @@
         android:id="@+id/cardView_contacto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:padding="5dp"
-        app:cardBackgroundColor="@color/md_theme_dark_errorContainer"
+        app:cardBackgroundColor="@color/TimeSplit_RED"
         app:cardCornerRadius="@dimen/redondeoEsquinas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,10 +30,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:fontFamily="sans-serif-thin"
+                android:fontFamily="@font/muli_black"
                 android:padding="@dimen/padding_general"
+                android:singleLine="true"
                 android:text="TextView"
                 android:textAlignment="center"
+                android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -42,27 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView_titulo_trabajo"
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/padding_general"
-                    android:text="Trabajo: "
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/textView_tiempoTrabajo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/padding_general"
-                    android:text="TextView"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
+                android:orientation="horizontal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,50 +52,13 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView_titulo_descanso"
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/padding_general"
-                    android:text="Descanso: "
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/textView_tiempoDescanso"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/padding_general"
-                    android:text="TextView"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white" />
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView_titulo_rondas"
-                    android:layout_width="90dp"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/padding_general"
-                    android:text="Rondas: "
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white" />
-
-                <TextView
-                    android:id="@+id/textView_numeroRondas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/padding_general"
-                    android:text="TextView"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                android:orientation="horizontal" />
 
 
         </LinearLayout>
