@@ -35,14 +35,15 @@
             app:startIconDrawable="@drawable/ic_round_source_24"
             app:startIconTint="?attr/textFillColor">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_Opciones_Nombre"
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/EditText_Stats_Perfiles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:enabled="false"
+                android:textSize="@dimen/textInputSize"
                 android:fontFamily="@font/muli_semibold"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:singleLine="true"
                 android:textColor="?attr/textFillColor"
                 android:textColorHighlight="?attr/textFillColor"
@@ -70,9 +71,9 @@
                 android:layout_marginBottom="10dp"
                 android:enabled="false"
                 android:fontFamily="@font/muli_semibold"
-                android:inputType="time"
-                android:textColor="?attr/textFillColor"
-                app:mask="@string/mask_tiempo" />
+                android:inputType="text"
+                android:textSize="@dimen/textInputSize"
+                android:textColor="?attr/textFillColor" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -95,9 +96,9 @@
                 android:layout_marginBottom="10dp"
                 android:enabled="false"
                 android:fontFamily="@font/muli_semibold"
-                android:inputType="time"
-                android:textColor="?attr/textFillColor"
-                app:mask="@string/mask_tiempo" />
+                android:inputType="text"
+                android:textSize="@dimen/textInputSize"
+                android:textColor="?attr/textFillColor" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -119,10 +120,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:enabled="false"
+                android:textSize="@dimen/textInputSize"
                 android:fontFamily="@font/muli_semibold"
-                android:inputType="time"
+                android:inputType="number"
                 android:textColor="?attr/textFillColor"
-                app:mask="@string/mask_tiempo" />
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
 

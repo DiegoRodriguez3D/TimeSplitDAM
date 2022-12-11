@@ -16,6 +16,13 @@ public class AjustesUsuario {
         this.id_usuario = id_usuario;
     }
 
+    public AjustesUsuario(int tema, int sonido, int volumen, int id_usuario) {
+        this.tema = tema;
+        this.sonido = sonido;
+        this.volumen = volumen;
+        this.id_usuario = id_usuario;
+    }
+
     public AjustesUsuario(){
 
     }

@@ -22,6 +22,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.timesplit.R;
 import com.timesplit.controlador.BD_Controller;
 import com.timesplit.controlador.Usuario_Controller;
+import com.timesplit.modelo.AjustesPerfil;
+import com.timesplit.modelo.AjustesUsuario;
+import com.timesplit.modelo.Estadisticas;
 import com.timesplit.modelo.Perfil;
 import com.timesplit.modelo.Usuario;
 import com.timesplit.utilidades.Utilidades;
@@ -139,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
         //QuickStart Play
         iconButton_PlayQuickStart = findViewById(R.id.iconButton_PlayQuickStart);
         iconButton_PlayQuickStart.setOnClickListener(v -> {
+            //Accede a los valores de los input
+
+
             // Crea intent para lanzar la activity con el listado de perfiles
             Intent intent = new Intent(MainActivity.this, com.timesplit.vista.TimerActivity.class);
             //Abre activity
@@ -171,22 +177,10 @@ public class MainActivity extends AppCompatActivity {
         testUser2.setNombre("Diego");
         testUser2.setApellidos("Rodriguez");
 
-
         Usuario_Controller.insertUsuario(testUser, db.getWritableDatabase());
         Usuario_Controller.insertUsuario(testUser2, db.getWritableDatabase());
 
-        //Lista por consola los usuarios almacenados al iniciar la aplicacion
-        List<Usuario> listaUsuarios = Usuario_Controller.listaUsuarios(db.getReadableDatabase());
-
-        for(Usuario usuario: listaUsuarios){
-            Log.d("testBD", "USUARIO ID: " + usuario.getId_usuario() + " - Email: " + usuario.getEmail() + " - Pass: " + usuario.getPassword()
-            + " - Nombre: " + usuario.getNombre() + " - Apellidos: " + usuario.getApellidos());
-        }
-
-
         Usuario testPerfilUsuario = Usuario_Controller.selectUsuarioByMail("test@mail.com", db.getReadableDatabase());
-        Log.d("testBD", "USUARIOEMAIL: " + testPerfilUsuario.getEmail() + " - ID: " + testPerfilUsuario.getId_usuario());
-
         // TEST PERFILES
         Perfil testPerfil = new Perfil();
         testPerfil.setNombre_perfil("Estudiar");
@@ -207,13 +201,19 @@ public class MainActivity extends AppCompatActivity {
         Perfil_Controller.insertPerfil(testPerfil, db.getWritableDatabase());
         Perfil_Controller.insertPerfil(testPerfil2, db.getWritableDatabase());
 
-        //Lista por consola los usuarios almacenados al iniciar la aplicacion
-        List<Perfil> listaPerfiles = Perfil_Controller.listaPerfiles(testPerfilUsuario.getId_usuario(), db.getReadableDatabase());
 
-        for(Perfil perfil: listaPerfiles){
-            Log.d("testBD", "PERFIL ID: " + perfil.getId_perfil() + " - Nombre: " + perfil.getNombre_perfil() + " - Trabajo: " + perfil.getTiempo_trabajo()
-                    + " - Descanso: " + perfil.getTiempo_descanso() + " - Preparacion: " + perfil.getTiempo_preparacion() + " - Rondas: " + perfil.getRondas() + " - Usuario: " + perfil.getId_usuario());
-        }
+        // TEST AJUSTES PERFILES
+        AjustesPerfil a_testPerfil = new AjustesPerfil("#6B23DC", "#94DC23", "#E5B41A", 1, 1);
+        Perfil_Controller.insertAjustesPerfil(a_testPerfil, db.getWritableDatabase());
+
+        // TEST AJUSTES USUARIO
+        AjustesUsuario a_testUsuario = new AjustesUsuario(0, 1, 100, 1);
+        Usuario_Controller.insertAjustesUsuario(a_testUsuario, db.getWritableDatabase());
+
+        //TEST ESTADISTICAS
+        Estadisticas estadistica = new Estadisticas(20, 100000000, 1000001, 1000, 1);
+        Usuario_Controller.insertEstadisticaUsuario(estadistica, db.getWritableDatabase());
+
 
     }
 

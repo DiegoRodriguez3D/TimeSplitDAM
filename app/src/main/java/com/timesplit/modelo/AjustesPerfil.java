@@ -5,12 +5,20 @@ public class AjustesPerfil {
     private String color_trabajo;
     private String color_descanso;
     private String color_preparacion;
-    private boolean sonido;
+    private int sonido;
     private int id_perfil;
 
     // Constructores
-    public AjustesPerfil(int id_ajustes_perfil, String color_trabajo, String color_descanso, String color_preparacion, boolean sonido, int id_perfil) {
+    public AjustesPerfil(int id_ajustes_perfil, String color_trabajo, String color_descanso, String color_preparacion, int sonido, int id_perfil) {
         this.id_ajustes_perfil = id_ajustes_perfil;
+        this.color_trabajo = color_trabajo;
+        this.color_descanso = color_descanso;
+        this.color_preparacion = color_preparacion;
+        this.sonido = sonido;
+        this.id_perfil = id_perfil;
+    }
+
+    public AjustesPerfil(String color_trabajo, String color_descanso, String color_preparacion, int sonido, int id_perfil) {
         this.color_trabajo = color_trabajo;
         this.color_descanso = color_descanso;
         this.color_preparacion = color_preparacion;
@@ -55,11 +63,11 @@ public class AjustesPerfil {
         this.color_preparacion = color_preparacion;
     }
 
-    public boolean isSonido() {
+    public int getSonido() {
         return sonido;
     }
 
-    public void setSonido(boolean sonido) {
+    public void setSonido(int sonido) {
         this.sonido = sonido;
     }
 

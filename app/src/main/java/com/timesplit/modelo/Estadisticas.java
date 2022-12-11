@@ -6,16 +6,24 @@ public class Estadisticas {
     private int total_trabajo;
     private int total_descanso;
     private int total_rondas;
-    private String nombre_usuario;
+    private int id_usuario;
 
     //Constructores
-    public Estadisticas(int id_estadisticas, int numero_perfiles, int total_trabajo, int total_descanso, int total_rondas, String nombre_usuario) {
+    public Estadisticas(int id_estadisticas, int numero_perfiles, int total_trabajo, int total_descanso, int total_rondas, int id_usuario) {
         this.id_estadisticas = id_estadisticas;
         this.numero_perfiles = numero_perfiles;
         this.total_trabajo = total_trabajo;
         this.total_descanso = total_descanso;
         this.total_rondas = total_rondas;
-        this.nombre_usuario = nombre_usuario;
+        this.id_usuario = id_usuario;
+    }
+
+    public Estadisticas(int numero_perfiles, int total_trabajo, int total_descanso, int total_rondas, int id_usuario) {
+        this.numero_perfiles = numero_perfiles;
+        this.total_trabajo = total_trabajo;
+        this.total_descanso = total_descanso;
+        this.total_rondas = total_rondas;
+        this.id_usuario = id_usuario;
     }
 
     public Estadisticas() {
@@ -62,11 +70,11 @@ public class Estadisticas {
         this.total_rondas = total_rondas;
     }
 
-    public String getNombre_usuario() {
-        return nombre_usuario;
+    public int getId_usuario() {
+        return id_usuario;
     }
 
-    public void setNombre_usuario(String nombre_usuario) {
-        this.nombre_usuario = nombre_usuario;
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 }

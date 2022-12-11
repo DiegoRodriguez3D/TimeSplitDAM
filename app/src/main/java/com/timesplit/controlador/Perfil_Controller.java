@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.timesplit.modelo.AjustesPerfil;
+import com.timesplit.modelo.AjustesUsuario;
 import com.timesplit.modelo.Perfil;
 import com.timesplit.utilidades.Utilidades;
 import com.timesplit.vista.LoginActivity;
@@ -16,7 +19,7 @@ public class Perfil_Controller {
 
     public static long insertPerfil(Perfil perfil, SQLiteDatabase db){
 
-        // Guarda atributos usuario
+        // Guarda atributos perfil
         ContentValues valores = new ContentValues();
         valores.put(Utilidades.PERFILES_NOMBRE, perfil.getNombre_perfil());
         valores.put(Utilidades.PERFILES_TIEMPO_TRABAJO, perfil.getTiempo_trabajo());
@@ -25,9 +28,21 @@ public class Perfil_Controller {
         valores.put(Utilidades.PERFILES_RONDAS, perfil.getRondas());
         valores.put(Utilidades.PERFILES_USERID, perfil.getId_usuario());
 
-        // Inserta el usuario en la BD
+        // Inserta el perfil en la BD
         return db.insert(Utilidades.BD_TABLA_PERFILES, null, valores);
     }
+
+    public static long insertAjustesPerfil(AjustesPerfil a_perfil, SQLiteDatabase db){
+        ContentValues valores = new ContentValues();
+        valores.put(Utilidades.PERFILES_A_COLOR_TRABAJO, a_perfil.getColor_trabajo());
+        valores.put(Utilidades.PERFILES_A_COLOR_DESCANSO, a_perfil.getColor_descanso());
+        valores.put(Utilidades.PERFILES_A_COLOR_PREPARACION, a_perfil.getColor_preparacion());
+        valores.put(Utilidades.PERFILES_A_SONIDO, a_perfil.getSonido());
+        valores.put(Utilidades.PERFILES_A_ID_PERFIL, a_perfil.getId_perfil());
+
+        return db.insert(Utilidades.BD_TABLA_PERFILES_AJUSTES, null, valores);
+    }
+
 
     //Devuelve todos los perfiles del usuario
     public static List<Perfil> listaPerfiles(int id_usuario, SQLiteDatabase db){

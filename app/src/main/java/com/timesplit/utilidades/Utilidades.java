@@ -1,7 +1,7 @@
 package com.timesplit.utilidades;
 
-//Clase que contiene los datos de la BD (nombres de tablas, columnas, etc)
 public class Utilidades {
+//Constantes globales con los datos de la BD (nombres de tablas, columnas, etc)
     //Datos BD
     public static final int BD_VERSION = 1;
     public static final String BD_NOMBRE = "timeSplit_BD";
@@ -49,5 +49,38 @@ public class Utilidades {
     public static final String ESTADISTICAS_TOTAL_DESCANSO = "total_descanso";
     public static final String ESTADISTICAS_TOTAL_RONDAS = "total_rondas";
     public static final String ESTADISTICAS_USERID = "id_usuario";
+
+
+    //METODOS
+    //Convierte milisegundos al formato MMSS
+    public static int toMMSS(long ms) {
+        //Convierte de milisegundos a minutos
+        int minutos = (int) (ms / 1000) / 60;
+
+        //Convierte los milisegundos restantes a segundos
+        int segundos = (int) (ms / 1000) % 60;
+
+        int tiempoMMSS = Integer.parseInt(minutos+""+segundos) ;
+
+        return tiempoMMSS;
+    }
+
+    public static String toHHMMSS(long ms) {
+        int horas = (int) (ms / (3600*1000));
+        //Convierte de milisegundos a minutos
+        int minutos = (int) (ms / (60*1000) % 60);
+        //Convierte los milisegundos restantes a segundos
+        int segundos = (int) (ms / 1000 % 60);
+
+        String tiempoMMSS = horas+"h "+minutos+"m "+segundos + "s " ;
+
+        return tiempoMMSS;
+    }
+
+    //Convierte de MMSS a milisegundos
+    private long toMs(int minutos, int segundos){
+        long ms = (minutos*60000) + (segundos*1000);
+        return ms;
+    }
 
 }

@@ -18,6 +18,13 @@ public class Usuario implements Serializable {
         this.apellidos = apellidos;
     }
 
+    public Usuario(String password, String nombre, String apellidos, String email) {
+        this.email = email;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+
     public Usuario(){
     }
 

@@ -174,6 +174,23 @@
 
 
         <Button
+            android:id="@+id/iconButton_Pause"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:isScrollContainer="false"
+            android:visibility="invisible"
+            app:icon="@drawable/ic_round_pause_24"
+            app:iconGravity="textStart"
+            app:iconSize="50dp"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
             android:id="@+id/iconButton_Next_Ronda"
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
