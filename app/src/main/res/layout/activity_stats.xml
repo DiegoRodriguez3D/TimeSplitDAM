@@ -41,13 +41,12 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:enabled="false"
-                android:textSize="@dimen/textInputSize"
                 android:fontFamily="@font/muli_semibold"
                 android:inputType="number"
                 android:singleLine="true"
                 android:textColor="?attr/textFillColor"
-                android:textColorHighlight="?attr/textFillColor"
-                android:textColorHint="?attr/textFillColor" />
+                android:textColorHint="?attr/textFillColor"
+                android:textSize="@dimen/textInputSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

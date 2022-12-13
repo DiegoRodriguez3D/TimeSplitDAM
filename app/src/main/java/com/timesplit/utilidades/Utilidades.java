@@ -1,5 +1,7 @@
 package com.timesplit.utilidades;
 
+import java.lang.reflect.Array;
+
 public class Utilidades {
 //Constantes globales con los datos de la BD (nombres de tablas, columnas, etc)
     //Datos BD
@@ -40,6 +42,7 @@ public class Utilidades {
     public static final String PERFILES_A_COLOR_PREPARACION = "color_preparacion";
     public static final String PERFILES_A_SONIDO = "sonido";
     public static final String PERFILES_A_ID_PERFIL = "id_perfil";
+    public static final String PERFILES_A_ID_USERID = "id_usuario";
 
     //Tabla estadisticas
     public static final String BD_TABLA_ESTADISTICAS = "estadisticas";
@@ -65,6 +68,7 @@ public class Utilidades {
         return tiempoMMSS;
     }
 
+    //Convierte de ms a formato HH:MM:SS y lo devuelve en string
     public static String toHHMMSS(long ms) {
         int horas = (int) (ms / (3600*1000));
         //Convierte de milisegundos a minutos
@@ -78,9 +82,18 @@ public class Utilidades {
     }
 
     //Convierte de MMSS a milisegundos
-    private long toMs(int minutos, int segundos){
+    public static long toMs(int minutos, int segundos){
         long ms = (minutos*60000) + (segundos*1000);
         return ms;
+    }
+
+    //Extrae datos usuario en inputs con formato MM:SS y los devuelve en milisegundos
+    public static long inputMMSS(String mmss){
+        String[] MMSS = mmss.split(":");
+        int minutos = Integer.parseInt(MMSS[0]);
+        int segundos = Integer.parseInt(MMSS[1]);
+
+        return toMs(minutos, segundos);
     }
 
 }

@@ -2,8 +2,11 @@ package com.timesplit.vista;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -23,6 +26,7 @@ public class AjustesUsuarioActivity extends AppCompatActivity {
     private AutoCompleteTextView AutoCompleteTextView_Dropdown;
     private TextInputEditText EditText_Opciones_Nombre, EditText_Opciones_Apellidos, EditText_Opciones_Email;
     private Slider Slider_Usuario_Volumen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,20 +62,26 @@ public class AjustesUsuarioActivity extends AppCompatActivity {
         //RECUPERA DATOS DE BD
         Usuario user = Usuario_Controller.selectUsuarioByMail(Auth_Controller.userLog.getEmail(), db.getReadableDatabase());
         AjustesUsuario a_user = Usuario_Controller.selectAjustesUsuarioByID(Auth_Controller.userLog.getId_usuario(), db.getReadableDatabase());
+
         //Si existen datos, los muestra en los input
-        if(user != null){
+        if(user.getId_usuario()!=0){
             EditText_Opciones_Nombre.setText(user.getNombre());
             EditText_Opciones_Apellidos.setText(user.getApellidos());
             EditText_Opciones_Email.setText(user.getEmail());
         }
 
-        if(a_user != null){
+        if(a_user.getId_ajustes() != 0){
             Slider_Usuario_Volumen.setValue((float) a_user.getVolumen());
             AutoCompleteTextView_Dropdown.setText(temaItems[a_user.getTema()], false);
             if (a_user.getVolumen() == 0){
-                //TODO -> Mutea la aplicacion
+                //TODO -> Mutea la aplicacion en el timer desde el mediaplayer
             }
+        }else{
+            //Si no existen ajustes, pone valores por defecto
+            AutoCompleteTextView_Dropdown.setText(temaItems[0], false);
+            Slider_Usuario_Volumen.setValue(100);
         }
+
 
         //Guardar
         filledButton_Guardar = findViewById(R.id.filledButton_Guardar);
@@ -82,7 +92,6 @@ public class AjustesUsuarioActivity extends AppCompatActivity {
             //Si los campos no están vacios, y son distintos que los datos ya existentes, actualiza el usuario
             if (!EditText_Opciones_Nombre.getText().toString().isEmpty() && !EditText_Opciones_Apellidos.getText().toString().isEmpty() && !EditText_Opciones_Email.getText().toString().isEmpty()){
                 if(!EditText_Opciones_Nombre.getText().toString().equals(user.getNombre())){
-
                     updateUser.setNombre(EditText_Opciones_Nombre.getText().toString());
                 }
 
@@ -96,35 +105,66 @@ public class AjustesUsuarioActivity extends AppCompatActivity {
                         updateUser.setEmail(EditText_Opciones_Email.getText().toString());
                     }
                 }
-
                 Usuario_Controller.updateUsuario(updateUser, db.getWritableDatabase());
             }
 
             //Si no recupera ajustes de la BD, los crea. De lo contrario, los actualiza
-            if(a_user == null){
+            if(a_user.getId_usuario() == 0){
                AjustesUsuario newA_User = new AjustesUsuario();
-                newA_User.setTema(AutoCompleteTextView_Dropdown.getListSelection());
+
+                //Cambia el tema a Defecto (Claro/Oscuro dependiendo del SO)
+                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Defecto")){
+                    newA_User.setTema(0);
+                    Usuario_Controller.cambiaTema(0);
+                }
+
+                //Cambia el tema a Claro
+                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Claro")) {
+                    newA_User.setTema(1);
+                    Usuario_Controller.cambiaTema(1);
+                }
+
+                //Cambia el tema a Oscuro
+                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Oscuro")) {
+                    newA_User.setTema(2);
+                    Usuario_Controller.cambiaTema(2);
+                }
+
+                //Ajusta el volumen
                 newA_User.setVolumen((int) Slider_Usuario_Volumen.getValue());
                 if(newA_User.getVolumen() != 0){
                     newA_User.setSonido(1);
                 }else{
                     newA_User.setSonido(0);
                 }
+
+                //Vincula los ajustes al usuario logeado
                 newA_User.setId_usuario(user.getId_usuario());
 
+                //Inserta los ajustes en BD
                 Usuario_Controller.insertAjustesUsuario(newA_User, db.getWritableDatabase());
-            }else{
 
+            }else{
                 Usuario_Controller.updateAjustesUsuario(a_user, db.getWritableDatabase());
 
-                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Defecto"))
+                //Cambia el tema a Defecto (Claro/Oscuro dependiendo del SO)
+                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Defecto")){
                     a_user.setTema(0);
+                    Usuario_Controller.cambiaTema(0);
+                }
 
-                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Claro"))
+                //Cambia el tema a Claro
+                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Claro")) {
                     a_user.setTema(1);
+                    Usuario_Controller.cambiaTema(1);
+                }
 
-                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Oscuro"))
+                //Cambia el tema a Oscuro
+                if (AutoCompleteTextView_Dropdown.getText().toString().equals("Oscuro")) {
                     a_user.setTema(2);
+                    Usuario_Controller.cambiaTema(2);
+                }
+
                 if(!Slider_Usuario_Volumen.equals(a_user.getVolumen()))
                     a_user.setVolumen((int) Slider_Usuario_Volumen.getValue());
 
@@ -135,7 +175,6 @@ public class AjustesUsuarioActivity extends AppCompatActivity {
                 }
 
                 Usuario_Controller.updateAjustesUsuario(a_user, db.getWritableDatabase());
-
             }
 
             //Vuelve a Home
@@ -162,6 +201,5 @@ public class AjustesUsuarioActivity extends AppCompatActivity {
             Intent intent = new Intent(AjustesUsuarioActivity.this, com.timesplit.vista.MainActivity.class);
             startActivity(intent);
         });
-
     }
 }

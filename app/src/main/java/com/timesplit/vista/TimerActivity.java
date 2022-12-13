@@ -3,75 +3,130 @@ package com.timesplit.vista;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.timesplit.R;
+import com.timesplit.controlador.Auth_Controller;
+import com.timesplit.controlador.BD_Controller;
+import com.timesplit.controlador.Perfil_Controller;
+import com.timesplit.controlador.Usuario_Controller;
+import com.timesplit.modelo.AjustesPerfil;
+import com.timesplit.modelo.AjustesUsuario;
+import com.timesplit.modelo.Estadisticas;
+import com.timesplit.modelo.Perfil;
 import com.timesplit.modelo.Temporizador;
+import com.timesplit.modelo.Usuario;
+import java.util.Locale;
 
-import java.util.Timer;
 
 public class TimerActivity extends AppCompatActivity {
     private Button iconButton_Back, iconButton_Previous_Ronda, iconButton_Play, iconButton_Pause, iconButton_Next_Ronda;
     private CircularProgressIndicator progressBar;
-    private TextView textView_Timer, textView_numeroRondas;
-
+    private TextView textView_Timer, textView_numeroRondas, textView_TituloPerfilTimer;
+    int volumen = 100, sonidoID = 0, sonido;
+    private SoundPool sp;
     private CountDownTimer timer;
-    private long tiempo_Inicial;
-    private long tiempo_Restante;
-    private long tiempo_Trabajo;
-    private long tiempo_Descanso;
-    private long tiempo_Preparacion;
-    private String nombreTrabajo;
-    private String nombreDescanso;
-    private String nombrePreparacion;
-    private int progress = 100;
-    private int rondas_Iniciales;
-    private int rondas_Restantes;
-    private String colorTrabajo;
-    private String colorDescanso;
-    private String colorPreparacion;
-    private boolean isTimerRunning = false;
-    private boolean isTimerStop = false;
+    private long tiempo_Inicial, tiempo_Restante, tiempo_Trabajo, tiempo_Descanso, tiempo_Preparacion;
+    private String nombreTrabajo = "TRABAJO", nombreDescanso = "DESCANSO", nombrePreparacion = "PREPARACION";
+    private int progress = 100, numero_Rondas, rondas_Iniciales, rondas_Restantes;
+    private String colorTrabajo_HEX = "#EC1738", colorDescanso_HEX = "#325D79", colorPreparacion_HEX = "#ECA417";
+    private int colorTrabajo = Color.parseColor(colorTrabajo_HEX), colorDescanso = Color.parseColor(colorDescanso_HEX), colorPreparacion = Color.parseColor(colorPreparacion_HEX);
+    private boolean isTimerRunning = false, isTrabajo = false, isDescanso = false, isPreparacion = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
+        //BD
+        BD_Controller db = new BD_Controller(TimerActivity.this);
+
         //Databinding
         textView_Timer = findViewById(R.id.textView_Timer);
         textView_numeroRondas = findViewById(R.id.textView_numeroRondas);
+        textView_TituloPerfilTimer = findViewById(R.id.textView_TituloPerfilTimer);
         progressBar = findViewById(R.id.Progress_bar);
         progressBar.setIndeterminate(false);
 
-        //RECIBE EL OBJETO TIMER
-        tiempo_Inicial = 5000;
-        rondas_Iniciales = 5;
+        //Crea SoundPool, dependiendo de la version de android, para reproducir sonidos
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            //optimiza uso para notificaciones
+            AudioAttributes at = new AudioAttributes.Builder().setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).setUsage(AudioAttributes.USAGE_NOTIFICATION).build();
+            sp = new SoundPool.Builder().setAudioAttributes(at).build();
+        }else {
+            sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        sonidoID = sp.load(TimerActivity.this, R.raw.relax,1);
+        volumen = 100;
+
+        //Recibe desde un intent un objeto Temporizador con los parametros que va a utilizar
+        Intent intentTemporizador = getIntent();
+        if (intentTemporizador.getSerializableExtra("Temporizador") != null) {
+            Temporizador temporizador = (Temporizador) intentTemporizador.getSerializableExtra("Temporizador");
+            Log.d("TAG", "Temporizador ID PERFIL: " + temporizador.getId_perfil() + " ID PERFIL: "+  temporizador.getNumero_rondas());
+            //Si tiene id de perfil, viene desde Perfiles
+            if (temporizador.getId_perfil() != 0) {
+                //Comprueba tablas datos
+                Usuario user = Usuario_Controller.selectUsuarioByMail(Auth_Controller.userLog.getEmail(), db.getReadableDatabase());
+                AjustesUsuario a_user = Usuario_Controller.selectAjustesUsuarioByID(user.getId_usuario(), db.getReadableDatabase());
+                Perfil perfil = Perfil_Controller.selectPerfilByID(temporizador.getId_perfil(), db.getReadableDatabase());
+                AjustesPerfil a_perfil = Perfil_Controller.selectAjustesPerfilById(user.getId_usuario(), db.getReadableDatabase());
+
+                //Inicializa las variables con la configuracion del usuario
+                tiempo_Trabajo = perfil.getTiempo_trabajo();
+                tiempo_Descanso = perfil.getTiempo_descanso();
+                tiempo_Preparacion = perfil.getTiempo_preparacion();
+                numero_Rondas = perfil.getRondas();
+                nombreTrabajo = perfil.getNombre_perfil();
+
+                //Si existen ajustes de usuario
+                if(a_user.getId_ajustes()!=0){
+                    volumen = a_user.getVolumen();
+                }
+
+                //Si existen ajustes de perfil
+                if(a_perfil.getId_ajustes_perfil()!=0){
+                    sonido = a_perfil.getSonido();
+                    if(sonido==0)
+                        sonidoID = sp.load(TimerActivity.this, R.raw.relax,1);
+                    if(sonido==1)
+                        sonidoID = sp.load(TimerActivity.this, R.raw.tono,1);
+                    if(sonido==2)
+                        sonidoID = sp.load(TimerActivity.this, R.raw.boxeo,1);
+
+                    colorTrabajo = Color.parseColor(a_perfil.getColor_trabajo());
+                    colorDescanso = Color.parseColor(a_perfil.getColor_descanso());
+                    colorPreparacion = Color.parseColor(a_perfil.getColor_preparacion());
+                }
+
+            } else {
+                //Viene desde Quickstart
+                tiempo_Trabajo = temporizador.getTiempo_trabajo();
+                tiempo_Descanso = temporizador.getTiempo_descanso();
+                tiempo_Preparacion = temporizador.getTiempo_preparacion();
+                numero_Rondas = temporizador.getNumero_rondas();
+            }
+        }
+
+        //Prepara la logica del Temporizador
+        tiempo_Inicial = tiempo_Preparacion;
+        rondas_Iniciales = numero_Rondas;
         tiempo_Restante= tiempo_Inicial;
         rondas_Restantes = rondas_Iniciales;
         progressBar.setProgress(100);
-
-        Temporizador temporizador = new Temporizador();
-        temporizador.getId_perfil();
-
-        if(temporizador.getId_perfil() != 0){
-            //SIGNIFICA QUE ES UN TEMPORIZADOR DE USUARIO
-            //Comprueba tablas datos
-
-            // Si tiempoPreparacion = 0, tiempo_Inicial = tiempoTrabajo else tiempo_Inciial = tiempoPreparacion
-
-            // Si no tiene ajustes utiliza colores por defecto
-        }else{
-            // SI es 0, significa que es un QuickStart
-            //Utiliza colores por defecto
-        }
-
+        progressBar.setIndicatorColor(colorPreparacion);
+        textView_TituloPerfilTimer.setText(nombrePreparacion);
 
         //Previous
         iconButton_Previous_Ronda = findViewById(R.id.iconButton_Previous_Ronda);
@@ -99,16 +154,20 @@ public class TimerActivity extends AppCompatActivity {
 
         iconButton_Pause.setOnLongClickListener(r -> {
             stopTimer();
-            return isTimerStop = true;
+            return true;
         });
 
         //Back
         iconButton_Back = findViewById(R.id.iconButton_Back);
         iconButton_Back.setOnClickListener(h -> {
+            stopTimer();
             Intent intent = new Intent(TimerActivity.this, com.timesplit.vista.MainActivity.class);
             startActivity(intent);
         });
 
+
+        iconButton_Previous_Ronda.setEnabled(false);
+        iconButton_Next_Ronda.setEnabled(false);
         actualizaTemporizadorTexto();
         actualizarRondasTexto();
     }
@@ -134,7 +193,14 @@ public class TimerActivity extends AppCompatActivity {
     }
 
     private void stopTimer() {
-        timer.cancel();
+        if(timer != null)
+            timer.cancel();
+        tiempo_Inicial = tiempo_Preparacion;
+        isDescanso=false;
+        isTrabajo = false;
+        isPreparacion=true;
+        progressBar.setIndicatorColor(colorPreparacion);
+        textView_TituloPerfilTimer.setText(nombrePreparacion);
         tiempo_Restante = tiempo_Inicial;
         rondas_Restantes = rondas_Iniciales;
         progressBar.setProgress(100);
@@ -163,12 +229,11 @@ public class TimerActivity extends AppCompatActivity {
     private void startTimer() {
         //Crea un temporizador con el tiempo restante que se actualice cada segundo (1000 ms)
         //Se calcula el progreso de la barra con una regla de tres (tiempo restante x 100 / tiempo inicial)
-        timer = new CountDownTimer(tiempo_Restante, 10) {
+        timer = new CountDownTimer(tiempo_Restante, 100) {
             @Override
             public void onTick(long millisUntilFinished) {
                 tiempo_Restante = millisUntilFinished;
                 progress= (int) ((tiempo_Restante*100)/tiempo_Inicial);
-                Log.d("TIMER", "onTick: progress -> " + progress);
                 if(tiempo_Restante<1000){
                     progressBar.setProgressCompat(progress-10, true);
                 }else{
@@ -181,21 +246,46 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 if (rondas_Restantes==1){
+                    //Reproduce sonido
+                    sp.play(sonidoID, (float)volumen, (float)volumen, 1, 0, 1);
                     isTimerRunning = false;
-                    textView_numeroRondas.setText("0");
+                    textView_TituloPerfilTimer.setText("FINALIZADO");
                     iconButton_Play.setVisibility(View.VISIBLE);
                     iconButton_Pause.setVisibility(View.INVISIBLE);
                 }else{
+                    //Reproduce sonido
+                    sp.play(sonidoID, (float)volumen, (float)volumen, 1, 0, 1);
                     progressBar.setProgressCompat(0, false);
-                    try {
-                        timer.wait(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    if(isPreparacion){
+                        isPreparacion = false;
+                        isDescanso = false;
+                        isTrabajo = true;
+                        iconButton_Previous_Ronda.setEnabled(true);
+                        iconButton_Next_Ronda.setEnabled(true);
+                        tiempo_Inicial = tiempo_Trabajo;
+                        textView_TituloPerfilTimer.setText(nombreTrabajo);
+                        progressBar.setIndicatorColor(colorTrabajo);
+                    }else if(isTrabajo){
+                        isTrabajo = false;
+                        isDescanso = true;
+                        tiempo_Inicial = tiempo_Descanso;
+                        textView_TituloPerfilTimer.setText(nombreDescanso);
+                        progressBar.setIndicatorColor(colorDescanso);
+                    }else if(isDescanso){
+                        isDescanso = false;
+                        isTrabajo = true;
+                        tiempo_Inicial = tiempo_Trabajo;
+                        textView_TituloPerfilTimer.setText(nombreTrabajo);
+                        progressBar.setIndicatorColor(colorTrabajo);
+                        rondas_Restantes--;
+                        actualizarRondasTexto();
+                        //Si es un usuario logeado, actualiza estadisticas
+                        if(Auth_Controller.userLog.getId_usuario()!=0)
+                            actualizaEstadisticas((int)tiempo_Trabajo, (int)tiempo_Descanso, 1);
                     }
-                    rondas_Restantes--;
-                    tiempo_Restante=tiempo_Inicial;
+
+                    tiempo_Restante = tiempo_Inicial;
                     progressBar.setProgressCompat(100, false);
-                    actualizarRondasTexto();
                     startTimer();
                 }
 
@@ -222,10 +312,15 @@ public class TimerActivity extends AppCompatActivity {
         textView_numeroRondas.setText(rondas_Restantes+"");
     }
 
-    private long toMs(int minutos, int segundos){
-        //Convierte de minutos:segundos a milisegundos
-        long ms = (minutos*60000) + (segundos*1000);
-        return ms;
+    private void actualizaEstadisticas(int tiempo_Trabajo, int tiempo_Descanso, int ronda){
+        BD_Controller db = new BD_Controller(TimerActivity.this);
+        Usuario user = Usuario_Controller.selectUsuarioByMail(Auth_Controller.userLog.getEmail(), db.getReadableDatabase());
+        Estadisticas estadisticas = Usuario_Controller.selectEstadisticasUsuario(user.getId_usuario(), db.getReadableDatabase());
+        tiempo_Trabajo += estadisticas.getTotal_trabajo();
+        tiempo_Descanso += estadisticas.getTotal_descanso();
+        ronda += estadisticas.getTotal_rondas();
+        int numeroPerfiles = Perfil_Controller.listaPerfiles(user.getId_usuario(), db.getReadableDatabase()).size();
+        Estadisticas newStats = new Estadisticas(numeroPerfiles, tiempo_Trabajo, tiempo_Descanso, ronda, user.getId_usuario());
+        Usuario_Controller.updateEstadisticas(newStats, db.getWritableDatabase());
     }
-
 }

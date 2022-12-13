@@ -78,7 +78,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_email"
+                android:id="@+id/EditText_Register_Email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -101,7 +101,7 @@
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_pass"
+                android:id="@+id/EditText_Register_Pass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -124,7 +124,7 @@
             app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_repeatPass"
+                android:id="@+id/EditText_Register_RepeatPass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -147,7 +147,7 @@
             android:hint="Nombre">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_nombre"
+                android:id="@+id/EditText_Register_Nombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -173,7 +173,7 @@
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_apellidos"
+                android:id="@+id/EditText_Register_Apellidos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"

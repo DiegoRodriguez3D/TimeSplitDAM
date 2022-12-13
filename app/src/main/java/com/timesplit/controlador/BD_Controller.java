@@ -24,8 +24,6 @@ public class BD_Controller extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Crea las tablas de la BD
-
-        // TODO: -> ID AUTOINCREMENT Logea con email (UNIQUE) y password, recupera ID sesión. Utiliza ID USUARIO para acceder a las demas tablas
         String CREAR_TABLA_USUARIOS = "CREATE TABLE " + Utilidades.BD_TABLA_USUARIO + "("
                 + Utilidades.USUARIO_ID + " INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT,"
                 + Utilidades.USUARIO_EMAIL + " VARCHAR NOT NULL UNIQUE,"
@@ -51,7 +49,7 @@ public class BD_Controller extends SQLiteOpenHelper {
 
         String CREA_TABLA_PERFILES = "CREATE TABLE " + Utilidades.BD_TABLA_PERFILES + "("
                 + Utilidades.PERFILES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + Utilidades.PERFILES_NOMBRE + " VARCHAR NOT NULL UNIQUE,"
+                + Utilidades.PERFILES_NOMBRE + " VARCHAR NOT NULL,"
                 + Utilidades.PERFILES_TIEMPO_TRABAJO + " INTEGER NOT NULL,"
                 + Utilidades.PERFILES_TIEMPO_DESCANSO + " INTEGER NOT NULL,"
                 + Utilidades.PERFILES_TIEMPO_PREPARACION + " INTEGER,"
@@ -93,7 +91,7 @@ public class BD_Controller extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //Borra tablas antiguas, y crea nuevas
+        //Si se necesita actualizar versión, borra tablas antiguas y crea nuevas
         String BORRAR_TABLA = String.valueOf(R.string.db_borrar);
 
         db.execSQL(BORRAR_TABLA, new String[]{Utilidades.BD_TABLA_USUARIO});

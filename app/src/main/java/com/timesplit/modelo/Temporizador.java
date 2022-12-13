@@ -1,6 +1,8 @@
 package com.timesplit.modelo;
 
-public class Temporizador {
+import java.io.Serializable;
+
+public class Temporizador implements Serializable {
     private String nombre_timer;
     private int tiempo_trabajo;
     private int tiempo_descanso;

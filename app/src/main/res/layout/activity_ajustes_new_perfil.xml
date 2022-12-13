@@ -40,85 +40,68 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField_NewPerfil_ColorTrabajo"
-            style="?attr/textInputOutlinedDenseStyle"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:hint="Color trabajo"
             app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="clear_text"
+            app:endIconMode="dropdown_menu"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_format_color_fill_24"
             app:startIconTint="?attr/textFillColor">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_NewPerfil_ColorTrabajo"
+            <AutoCompleteTextView
+                android:id="@+id/AutoCompleteTextView_Dropdown_ColorTrabajo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/muli_semibold"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textSize="@dimen/textInputSize"
-                android:textColor="?attr/textFillColor"
-                android:textColorHighlight="?attr/textFillColor"
-                android:textColorHint="?attr/textFillColor" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField_NewPerfil_ColorDescanso"
-            style="?attr/textInputOutlinedDenseStyle"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:hint="Color descanso"
             app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="clear_text"
+            app:endIconMode="dropdown_menu"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_format_color_fill_24"
             app:startIconTint="?attr/textFillColor">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_NewPerfil_ColorDescanso"
+            <AutoCompleteTextView
+                android:id="@+id/AutoCompleteTextView_Dropdown_ColorDescanso"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/muli_semibold"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textSize="@dimen/textInputSize"
-                android:textColor="?attr/textFillColor"
-                android:textColorHighlight="?attr/textFillColor"
-                android:textColorHint="?attr/textFillColor" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField_NewPerfil_ColorPreparacion"
-            style="?attr/textInputOutlinedDenseStyle"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Color prepración"
+            android:layout_marginBottom="10dp"
+            android:hint="Color preparación"
             app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="clear_text"
+            app:endIconMode="dropdown_menu"
             app:endIconTint="?attr/textFillColor"
+
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_format_color_fill_24"
             app:startIconTint="?attr/textFillColor">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_NewPerfil_ColorPreparacion"
+            <AutoCompleteTextView
+                android:id="@+id/AutoCompleteTextView_Dropdown_ColorPreparacion"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/muli_semibold"
-                android:inputType="none"
-                android:singleLine="true"
-                android:textColor="?attr/textFillColor"
-                android:textSize="@dimen/textInputSize"
-                android:textColorHighlight="?attr/textFillColor"
-                android:textColorHint="?attr/textFillColor" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,24 +110,20 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:hint="Sonido"
             app:boxCornerRadiusBottomEnd="10dp"
-            app:endIconMode="clear_text"
+            app:endIconMode="dropdown_menu"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_music_note_24"
             app:startIconTint="?attr/textFillColor">
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/EditText_Opciones_Tema"
+            <AutoCompleteTextView
+                android:id="@+id/AutoCompleteTextView_Dropdown_Sonido"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/muli_semibold"
-                android:inputType="none"
-                android:textSize="@dimen/textInputSize"
-                android:singleLine="true"
-                app:endIconMode="dropdown_menu" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

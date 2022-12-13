@@ -26,6 +26,7 @@ import com.timesplit.modelo.AjustesPerfil;
 import com.timesplit.modelo.AjustesUsuario;
 import com.timesplit.modelo.Estadisticas;
 import com.timesplit.modelo.Perfil;
+import com.timesplit.modelo.Temporizador;
 import com.timesplit.modelo.Usuario;
 import com.timesplit.utilidades.Utilidades;
 import com.vicmikhailau.maskededittext.MaskedEditText;
@@ -37,10 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private Button iconButton_PlayQuickStart, button_perfiles, iconButton_HomeMenu;
     private MaskedEditText EditText_rondas, EditText_trabajo, EditText_descanso, EditText_preparacion;
     private TextView textView_HomeUserName;
-    public static Usuario userLog;
     private SharedPreferences sp;
-
-    public static int estado = 0;
+    private int tiempoTrabajo, tiempoDescanso, tiempoPreparacion, rondas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,80 +74,43 @@ public class MainActivity extends AppCompatActivity {
             button_perfiles.setVisibility(View.VISIBLE);
         }
 
-
-        //INSERTAR
-//        button_insertar.setOnClickListener(v -> {
-            //Comprueba que todos los campos estén llenos
-//            if(!TextUtils.isEmpty(editText_nombre.getText()) && !TextUtils.isEmpty(editText_telefono.getText()) && !TextUtils.isEmpty(  editText_email.getText())){
-//
-//                //Crea contacto con los datos introducidos por el usuario
-//                com.timesplit.modelo.Contacto contacto = new com.timesplit.modelo.Contacto(
-//                        editText_nombre.getText().toString(),
-//                        editText_telefono.getText().toString(),
-//                        editText_email.getText().toString());
-//
-//                //Inserta el contacto
-//                long resultado = db.insertarContacto(contacto);
-//
-//                // Si el método insertar devuelve -1, significa que no ha podido realizar la inserción
-//                if(resultado== -1){
-//                    Toast.makeText(this, R.string.errorNombre, Toast.LENGTH_SHORT).show();
-//                }else{
-//                    vaciarCampos();
-//                    Toast.makeText(getApplicationContext(), R.string.success ,Toast.LENGTH_LONG).show();
-//                }
-//
-//                //Test resultado obtenido
-//               // Toast.makeText(getApplicationContext(), resultado+"" ,Toast.LENGTH_LONG).show();
-//
-//            }else{
-//                Toast.makeText(this, R.string.empty, Toast.LENGTH_SHORT).show();
-//            }
-
-//        });
-
-        //ELIMINAR
-//        button_eliminar.setOnClickListener(v -> {
-            //Comprueba que el campo Nombre esté lleno
-//            if(!TextUtils.isEmpty(editText_nombre.getText())){
-//
-//                try{
-//                    //Busca el contacto a eliminar
-//                    com.timesplit.modelo.Contacto c = db.devuelveContacto(editText_nombre.getText().toString());
-//
-//                    //Borra el contacto
-//                    long resultado = db.borraContacto(c);
-//
-//                    //Si devuelve -1 significa que no se ha podido eliminar
-//                    if(resultado==-1){
-//                        Toast.makeText(this, R.string.errorNombre2, Toast.LENGTH_SHORT).show();
-//                    }else{
-//                        Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show();
-//                        vaciarCampos();
-//                    }
-//
-//                    //Toast.makeText(getApplicationContext(), resultado+"" ,Toast.LENGTH_LONG).show();
-//
-//                    //Controla excepción si se intenta consultar un contacto que no existe
-//                }catch(Exception e){
-//                    Toast.makeText(MainActivity.this, R.string.errorNombre2, Toast.LENGTH_SHORT).show();
-//                }
-//
-//              }else{
-//                Toast.makeText(this, R.string.emptyNombre, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
         //QuickStart Play
         iconButton_PlayQuickStart = findViewById(R.id.iconButton_PlayQuickStart);
         iconButton_PlayQuickStart.setOnClickListener(v -> {
-            //Accede a los valores de los input
 
+            //Comprueba que los campos no están vacios
+            if(!EditText_trabajo.getText().toString().isEmpty() && !EditText_descanso.getText().toString().isEmpty()
+                    && !EditText_preparacion.getText().toString().isEmpty() && !EditText_rondas.getText().toString().isEmpty()){
 
-            // Crea intent para lanzar la activity con el listado de perfiles
-            Intent intent = new Intent(MainActivity.this, com.timesplit.vista.TimerActivity.class);
-            //Abre activity
-            startActivity(intent);
+                //Comprueba que los input de tiempo se han cubierto correctamente
+                if(EditText_trabajo.getText().toString().length() == 5 && EditText_descanso.getText().toString().length() == 5
+                        && EditText_preparacion.getText().toString().length() == 5){
+
+                    tiempoTrabajo = (int) Utilidades.inputMMSS(EditText_trabajo.getText().toString());
+                    tiempoDescanso = (int) Utilidades.inputMMSS(EditText_descanso.getText().toString());
+                    tiempoPreparacion = (int) Utilidades.inputMMSS(EditText_preparacion.getText().toString());
+                    rondas = Integer.parseInt(EditText_rondas.getText().toString());
+
+                    Temporizador temporizador = new Temporizador();
+                    temporizador.setId_perfil(0);
+                    temporizador.setTiempo_trabajo(tiempoTrabajo);
+                    temporizador.setTiempo_descanso(tiempoDescanso);
+                    temporizador.setTiempo_preparacion(tiempoPreparacion);
+                    temporizador.setNumero_rondas(rondas);
+
+                    //Crea intent para lanzar la activity con el objeto Temporizador
+                    Intent intent = new Intent(MainActivity.this, com.timesplit.vista.TimerActivity.class);
+                    //Envia un objeto Temporizador a la nueva activity
+                    intent.putExtra("Temporizador", temporizador);
+                    //Abre activity
+                    startActivity(intent);
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "Introduzca el tiempo en formato mm:ss" ,Toast.LENGTH_LONG).show();
+                }
+            }else{
+                Toast.makeText(getApplicationContext(), "Debe rellenar todos los campos." ,Toast.LENGTH_LONG).show();
+            }
         });
 
         //PERFILES
@@ -157,13 +119,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        //Ajustes
         iconButton_HomeMenu.setOnClickListener(h -> {
             Intent intent = new Intent(MainActivity.this, com.timesplit.vista.MenuActivity.class);
             startActivity(intent);
         });
 
 
-        // TODO: --------------- TEST BD --------------------
         //TEST USUARIO
         Usuario testUser = new Usuario();
         testUser.setEmail("test@mail.com");

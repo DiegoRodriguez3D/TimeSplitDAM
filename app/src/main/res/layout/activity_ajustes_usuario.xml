@@ -102,7 +102,6 @@
                 android:inputType="textPersonName"
                 android:singleLine="true"
                 android:textColor="?attr/textFillColor"
-                android:textColorHighlight="?attr/textFillColor"
                 android:textColorHint="?attr/textFillColor" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -169,6 +168,7 @@
             <AutoCompleteTextView
                 android:id="@+id/AutoCompleteTextView_Dropdown"
                 android:layout_width="match_parent"
+                android:inputType="none"
                 android:layout_height="match_parent"
 
                 />
@@ -213,7 +213,7 @@
                     android:saveEnabled="false"
                     android:soundEffectsEnabled="true"
                     android:stepSize="1"
-                    android:theme="@style/TimeSplit"
+                    app:trackColorActive="@color/TimeSplit_RED"
                     android:valueFrom="0"
                     android:valueTo="100" />
 

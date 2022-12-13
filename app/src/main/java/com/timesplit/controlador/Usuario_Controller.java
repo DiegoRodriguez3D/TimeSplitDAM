@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.database.sqlite.SQLiteDatabaseKt;
 
 import com.timesplit.modelo.AjustesUsuario;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario_Controller {
-
 
     public static long insertUsuario(Usuario usuario, SQLiteDatabase db){
         // Guarda atributos usuario
@@ -53,6 +53,7 @@ public class Usuario_Controller {
 
         return db.insert(Utilidades.BD_TABLA_ESTADISTICAS, null, valores);
     }
+
 //Recupera un usuario a traves de su id
     public static Usuario selectUsuarioByID (int id_usuario, SQLiteDatabase db) {
         // Crea cursor
@@ -62,17 +63,17 @@ public class Usuario_Controller {
                 Utilidades.USUARIO_ID+"=?",new String[]{id_usuario+""},
                 null,null,null);
 
-        //Si tiene datos, va a la primera posicion
-        if(cursor != null)
-            cursor.moveToFirst();
-
-        // Crea usuario con los atributos que recupera el cursor
         Usuario usuario = new Usuario();
-        usuario.setId_usuario(cursor.getInt(0));
-        usuario.setEmail(cursor.getString(1));
-        usuario.setPassword(cursor.getString(2));
-        usuario.setNombre(cursor.getString(3));
-        usuario.setApellidos(cursor.getString(4));
+
+        //Si recupera datos, va a la primera posicion
+        if(cursor.moveToFirst()){
+            // Crea usuario con los atributos que recupera el cursor
+            usuario.setId_usuario(cursor.getInt(0));
+            usuario.setEmail(cursor.getString(1));
+            usuario.setPassword(cursor.getString(2));
+            usuario.setNombre(cursor.getString(3));
+            usuario.setApellidos(cursor.getString(4));
+        }
 
         return usuario;
     }
@@ -84,15 +85,15 @@ public class Usuario_Controller {
                 Utilidades.USUARIO_EMAIL+"=?",new String[]{email},
                 null,null,null);
 
-        if(cursor != null)
-            cursor.moveToFirst();
-
         Usuario usuario = new Usuario();
-        usuario.setId_usuario(cursor.getInt(0));
-        usuario.setEmail(cursor.getString(1));
-        usuario.setPassword(cursor.getString(2));
-        usuario.setNombre(cursor.getString(3));
-        usuario.setApellidos(cursor.getString(4));
+
+        if(cursor.moveToFirst()) {
+            usuario.setId_usuario(cursor.getInt(0));
+            usuario.setEmail(cursor.getString(1));
+            usuario.setPassword(cursor.getString(2));
+            usuario.setNombre(cursor.getString(3));
+            usuario.setApellidos(cursor.getString(4));
+        }
 
         return usuario;
     }
@@ -119,15 +120,16 @@ public class Usuario_Controller {
                 Utilidades.USUARIO_A_USERID+"=?",new String[]{id_usuario+""},
                 null,null,null);
 
-        if(cursor != null)
-            cursor.moveToFirst();
-
         AjustesUsuario a_usuario = new AjustesUsuario();
-        a_usuario.setId_ajustes(cursor.getInt(0));
-        a_usuario.setTema(cursor.getInt(1));
-        a_usuario.setSonido(cursor.getInt(2));
-        a_usuario.setVolumen(cursor.getInt(3));
-        a_usuario.setId_usuario(cursor.getInt(4));
+
+        if(cursor.moveToFirst()){
+            a_usuario.setId_ajustes(cursor.getInt(0));
+            a_usuario.setTema(cursor.getInt(1));
+            a_usuario.setSonido(cursor.getInt(2));
+            a_usuario.setVolumen(cursor.getInt(3));
+            a_usuario.setId_usuario(cursor.getInt(4));
+        }
+
 
         return a_usuario;
     }
@@ -139,20 +141,18 @@ public class Usuario_Controller {
                 Utilidades.ESTADISTICAS_USERID+"=?",new String[]{id_usuario+""},
                 null,null,null);
 
-        if(cursor != null)
-            cursor.moveToFirst();
-
         Estadisticas estadisticas = new Estadisticas();
-        estadisticas.setId_estadisticas(cursor.getInt(0));
-        estadisticas.setNumero_perfiles(cursor.getInt(1));
-        estadisticas.setTotal_trabajo(cursor.getInt(2));
-        estadisticas.setTotal_descanso(cursor.getInt(3));
-        estadisticas.setTotal_rondas(cursor.getInt(4));
-        estadisticas.setId_usuario(cursor.getInt(5));
+        if(cursor.moveToFirst()){
+            estadisticas.setId_estadisticas(cursor.getInt(0));
+            estadisticas.setNumero_perfiles(cursor.getInt(1));
+            estadisticas.setTotal_trabajo(cursor.getInt(2));
+            estadisticas.setTotal_descanso(cursor.getInt(3));
+            estadisticas.setTotal_rondas(cursor.getInt(4));
+            estadisticas.setId_usuario(cursor.getInt(5));
+        }
 
         return estadisticas;
     }
-
 
     public static List<Usuario> listaUsuarios(SQLiteDatabase db){
         List<Usuario> listaUsuarios = new ArrayList<>();
@@ -180,7 +180,6 @@ public class Usuario_Controller {
         // Devuelve una lista de usuarios
         return listaUsuarios;
     }
-
 
     // Actualiza usuario
     public static int updateUsuario(Usuario usuario, SQLiteDatabase db) {
@@ -210,11 +209,40 @@ public class Usuario_Controller {
 
     }
 
+    public static int updateEstadisticas(Estadisticas stats, SQLiteDatabase db){
+        ContentValues valores = new ContentValues();
+        valores.put(Utilidades.ESTADISTICAS_NUMERO_PERFILES, stats.getNumero_perfiles());
+        valores.put(Utilidades.ESTADISTICAS_TOTAL_TRABAJO, stats.getTotal_trabajo());
+        valores.put(Utilidades.ESTADISTICAS_TOTAL_DESCANSO, stats.getTotal_descanso());
+        valores.put(Utilidades.ESTADISTICAS_TOTAL_RONDAS, stats.getTotal_rondas());
+        valores.put(Utilidades.ESTADISTICAS_USERID, stats.getId_usuario());
+
+        return db.update(Utilidades.BD_TABLA_ESTADISTICAS, valores, Utilidades.ESTADISTICAS_USERID + "=?",
+                new String[]{stats.getId_usuario()+""});
+
+    }
+
     //Borra usuario
     public long deleteUsuario(Usuario usuario, SQLiteDatabase db) {
         // Retorna un int (-1 si no se pudo borrar, o la posición borrada
         return db.delete(Utilidades.BD_TABLA_USUARIO, Utilidades.USUARIO_ID+"=?",
                 new String[]{usuario.getId_usuario()+""});
+    }
+
+//Cambia el tema de la app dependiendo de los ajustes del usuario
+    public static void cambiaTema (int tema){
+        //Cambia a tema por defecto (Depende del DarkMode del SO)
+        if (tema == 0){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }
+
+        //Cambia el tema a Claro
+        if (tema == 1)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        //Cambia el tema a Oscuro
+        if (tema == 2)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
     }
 
 }

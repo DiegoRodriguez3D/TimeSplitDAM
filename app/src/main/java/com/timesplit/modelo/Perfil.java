@@ -20,6 +20,15 @@ private int id_usuario;
         this.id_usuario = id_usuario;
     }
 
+    public Perfil(String nombre_perfil, int tiempo_trabajo, int tiempo_descanso, int tiempo_preparacion, int rondas, int id_usuario) {
+        this.nombre_perfil = nombre_perfil;
+        this.tiempo_trabajo = tiempo_trabajo;
+        this.tiempo_descanso = tiempo_descanso;
+        this.tiempo_preparacion = tiempo_preparacion;
+        this.rondas = rondas;
+        this.id_usuario = id_usuario;
+    }
+
     public Perfil() {
     }
 

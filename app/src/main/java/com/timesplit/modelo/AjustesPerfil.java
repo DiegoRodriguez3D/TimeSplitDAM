@@ -1,6 +1,9 @@
 package com.timesplit.modelo;
 
-public class AjustesPerfil {
+import java.io.Serializable;
+
+//Implementa Seruializable para poder pasar objetos por Intent
+public class AjustesPerfil implements Serializable {
     private int id_ajustes_perfil;
     private String color_trabajo;
     private String color_descanso;
@@ -24,6 +27,13 @@ public class AjustesPerfil {
         this.color_preparacion = color_preparacion;
         this.sonido = sonido;
         this.id_perfil = id_perfil;
+    }
+
+    public AjustesPerfil(String color_trabajo, String color_descanso, String color_preparacion, int sonido) {
+        this.color_trabajo = color_trabajo;
+        this.color_descanso = color_descanso;
+        this.color_preparacion = color_preparacion;
+        this.sonido = sonido;
     }
 
     public AjustesPerfil() {

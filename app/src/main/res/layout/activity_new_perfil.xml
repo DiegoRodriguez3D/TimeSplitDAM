@@ -72,7 +72,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField_Opciones_Nombre"
+            android:id="@+id/outlinedTextField_NewPerfil_Nombre"
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,17 +85,16 @@
             app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/EditText_Opciones_Nombre"
+                android:id="@+id/EditText_NewPerfil_Nombre"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/muli_semibold"
                 android:inputType="textPersonName"
                 android:singleLine="true"
-                android:textSize="@dimen/textInputSize"
                 android:textColor="?attr/textFillColor"
-                android:textColorHighlight="?attr/textFillColor"
-                android:textColorHint="?attr/textFillColor" />
+                android:textColorHint="?attr/textFillColor"
+                android:textSize="@dimen/textInputSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,7 +131,7 @@
             android:hint="Descanso (minutos)"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
-            app:startIconDrawable="@drawable/ic_round_timer_24"
+            app:startIconDrawable="@drawable/ic_round_bedtime_24"
             app:startIconTint="?attr/textFillColor"
             app:boxCornerRadiusTopStart="10dp"
             app:endIconMode="clear_text">
@@ -157,7 +156,7 @@
             android:hint="Preparación (minutos)"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
-            app:startIconDrawable="@drawable/ic_round_timer_24"
+            app:startIconDrawable="@drawable/ic_round_more_time_24"
             app:startIconTint="?attr/textFillColor"
             app:boxCornerRadiusTopStart="10dp"
             app:endIconMode="clear_text">

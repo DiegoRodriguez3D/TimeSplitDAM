@@ -3,24 +3,23 @@ package com.timesplit.vista;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.timesplit.R;
 import com.timesplit.controlador.Auth_Controller;
 import com.timesplit.controlador.BD_Controller;
 import com.timesplit.controlador.Perfil_Controller;
-import com.timesplit.modelo.Contacto;
 import com.timesplit.modelo.Perfil;
+import com.timesplit.modelo.Temporizador;
 
 import java.util.List;
 
 
-public class PerfilesActivity extends AppCompatActivity {
+public class PerfilesActivity extends AppCompatActivity implements OnRecyclerViewItemClickListener {
 
     private Button iconButton_Back, iconButton_HomeMenu;
     private FloatingActionButton button_add;
@@ -54,6 +53,10 @@ public class PerfilesActivity extends AppCompatActivity {
 
             //Asigna adapter al recyclerView
             recyclerView_perfiles.setAdapter(recyclerView_adapter);
+
+            //Crea listener para detectar elemento pulsado
+            recyclerView_adapter.setOnItemClickListener((OnRecyclerViewItemClickListener) this);
+
         }
 
         //Nuevo Perfil
@@ -76,5 +79,20 @@ public class PerfilesActivity extends AppCompatActivity {
             Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.MenuActivity.class);
             startActivity(intent);
         });
+    }
+
+    //Lanza un temporizador con los parametros del perfil seleccionado
+    @Override
+    public void onRecyclerViewItemClicked(int position, int id) {
+        if(id==-1) {
+            Perfil perfil = listaPerfiles.get(position);
+            Temporizador temporizador = new Temporizador(perfil.getTiempo_trabajo(), perfil.getTiempo_descanso(), perfil.getTiempo_preparacion(), perfil.getRondas(), perfil.getId_perfil());
+            //Crea intent para lanzar la activity con el objeto Temporizador
+            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.TimerActivity.class);
+            //Envia un objeto Temporizador a la nueva activity
+            intent.putExtra("Temporizador", temporizador);
+            //Abre activity
+            startActivity(intent);
+        }
     }
 }
