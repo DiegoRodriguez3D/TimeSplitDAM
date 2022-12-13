@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.PassActivity">
+    tools:context=".Controlador.PassActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
             app:icon="@drawable/ic_baseline_arrow_back_ios_24"
             app:iconGravity="textStart"
@@ -36,7 +36,7 @@
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_weight="1"
             android:isScrollContainer="false"
             app:icon="@drawable/ic_round_home_24"
@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:orientation="vertical"
         android:outlineProvider="none"
@@ -87,10 +87,10 @@
             android:layout_height="wrap_content"
             android:hint="Contraseña actual"
             app:boxCornerRadiusTopStart="10dp"
-            app:startIconTint="?attr/textFillColor"
+            app:endIconMode="password_toggle"
             app:endIconTint="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_lock_24"
-            app:endIconMode="password_toggle">
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_Pass_oldPass"
@@ -108,11 +108,11 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconDrawable="@drawable/ic_round_lock_24"
-            app:startIconTint="?attr/textFillColor"
-            app:endIconTint="?attr/textFillColor"
             android:hint="Nueva Contraseña"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            app:endIconTint="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_lock_24"
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_Pass_newPass"
@@ -131,12 +131,12 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconDrawable="@drawable/ic_round_lock_24"
-            app:startIconTint="?attr/textFillColor"
-            app:endIconTint="?attr/textFillColor"
             android:hint="Repita nueva contraseña"
             app:boxCornerRadiusBottomEnd="10dp"
-            app:endIconMode="password_toggle">
+            app:endIconMode="password_toggle"
+            app:endIconTint="?attr/textFillColor"
+            app:startIconDrawable="@drawable/ic_round_lock_24"
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_Pass_repeatNewPass"

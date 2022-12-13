@@ -20,15 +20,16 @@ public class TODO {
         // Registro - VV
         // Timer -- VV
         // Perfiles -- VV
-        // NewPerfil -- VV -> Controlar inputs tiempo (mm:ss)
+        // NewPerfil -- VV
         // Ajustes Perfil -- VV
 
     // TODO -> Pulir diseño:
-    //  COLORES TEMPORIZADOR VIVOS
+    // MAINACTIVITY descuadra en pantallas pequeñas -- VV
+    //  COLORES TEMPORIZADOR VIVOS -- VV
     //  SONIDO
-    //  TEMA AL CERRAR APP
-    //  COLOR SELECCION TEXTO
+    //  TEMA AL CERRAR APP -> guardar en sharedPreferences y actualizar al abrir main
+    //  COLOR SELECCION TEXTO -- VV
+    // Guardar estadisticas de quickshare si el usuario esta logeado!!!
 
-    //
 
 }

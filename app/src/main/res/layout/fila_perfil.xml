@@ -33,7 +33,7 @@
                 android:fontFamily="@font/muli_black"
                 android:padding="@dimen/padding_general"
                 android:singleLine="true"
-                android:text="TextView"
+                android:text="Nombre Perfil"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/white"

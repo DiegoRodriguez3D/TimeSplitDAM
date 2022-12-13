@@ -1,25 +1,19 @@
-package com.timesplit.vista;
+package com.timesplit.Controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.timesplit.R;
-import com.timesplit.controlador.Auth_Controller;
-import com.timesplit.controlador.BD_Controller;
-import com.timesplit.controlador.Perfil_Controller;
-import com.timesplit.controlador.Usuario_Controller;
-import com.timesplit.modelo.AjustesPerfil;
-import com.timesplit.modelo.Perfil;
-import com.timesplit.modelo.Usuario;
-import com.timesplit.utilidades.Utilidades;
+import com.timesplit.Modelo.Login;
+import com.timesplit.Modelo.BD;
+import com.timesplit.Modelo.AjustesPerfil;
+import com.timesplit.Modelo.Perfil;
+import com.timesplit.Modelo.Usuario;
+import com.timesplit.Utilidades.Utilidades;
 import com.vicmikhailau.maskededittext.MaskedEditText;
-
 import java.util.Locale;
 
 public class NewPerfilActivity extends AppCompatActivity {
@@ -34,7 +28,7 @@ public class NewPerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_perfil);
-        BD_Controller db = new BD_Controller(NewPerfilActivity.this);
+        BD db = new BD(NewPerfilActivity.this);
 
         //DATABINDING
         EditText_NewPerfil_Nombre = findViewById(R.id.EditText_NewPerfil_Nombre);
@@ -46,7 +40,7 @@ public class NewPerfilActivity extends AppCompatActivity {
         Intent intentAjustes = getIntent();
 
         //Accede a los datos del usuario
-        Usuario user = Usuario_Controller.selectUsuarioByMail(Auth_Controller.userLog.getEmail(), db.getReadableDatabase());
+        Usuario user = Usuario.selectUsuarioByMail(Login.userLog.getEmail(), db.getReadableDatabase());
 
         //Guardar
         filledButton_GuardarPerfil = findViewById(R.id.filledButton_GuardarPerfil);
@@ -67,24 +61,24 @@ public class NewPerfilActivity extends AppCompatActivity {
 
 
                     //Comprueba que no exista un perfil con el nombre introducido para el usuario logeado
-                    if(!Perfil_Controller.existePerfilByNombre(nombre, user.getId_usuario(), db.getReadableDatabase())){
+                    if(!Perfil.existePerfilByNombre(nombre, user.getId_usuario(), db.getReadableDatabase())){
                         Perfil perfil = new Perfil(nombre, tiempoTrabajo, tiempoDescanso, tiempoPreparacion, rondas, user.getId_usuario());
-                        Perfil_Controller.insertPerfil(perfil, db.getWritableDatabase());
+                        Perfil.insertPerfil(perfil, db.getWritableDatabase());
 
                         //Si recupera AjustesPerfil a traves de intent, crea objeto
                         if(intentAjustes.getSerializableExtra("AjustesPerfil") != null){
                             AjustesPerfil a_perfil = (AjustesPerfil) intentAjustes.getSerializableExtra("AjustesPerfil");
 
                             //Recupera el id de perfil e inserta los ajustes
-                            Perfil p = Perfil_Controller.selectPerfilByNombre(nombre, db.getReadableDatabase());
+                            Perfil p = Perfil.selectPerfilByNombre(nombre, db.getReadableDatabase());
                             a_perfil.setId_perfil(p.getId_perfil());
-                            Perfil_Controller.insertAjustesPerfil(a_perfil, db.getWritableDatabase());
+                            AjustesPerfil.insertAjustesPerfil(a_perfil, db.getWritableDatabase());
                         }
                     }else{
                         Toast.makeText(getApplicationContext(), "El nombre del perfil ya existe." ,Toast.LENGTH_LONG).show();
                     }
 
-                    Intent intent = new Intent(NewPerfilActivity.this, com.timesplit.vista.PerfilesActivity.class);
+                    Intent intent = new Intent(NewPerfilActivity.this, com.timesplit.Controlador.PerfilesActivity.class);
                     startActivity(intent);
 
                 }else{
@@ -98,7 +92,7 @@ public class NewPerfilActivity extends AppCompatActivity {
         //Avanzado
         textButton_NewPerfil_Avanzado = findViewById(R.id.textButton_NewPerfil_Avanzado);
         textButton_NewPerfil_Avanzado.setOnClickListener(r -> {
-            Intent intent = new Intent(NewPerfilActivity.this, com.timesplit.vista.AjustesNewPerfilActivity.class);
+            Intent intent = new Intent(NewPerfilActivity.this, com.timesplit.Controlador.AjustesNewPerfilActivity.class);
             startActivity(intent);
         });
 
@@ -111,7 +105,7 @@ public class NewPerfilActivity extends AppCompatActivity {
         // Ajustes
         iconButton_Home = findViewById(R.id.iconButton_Home);
         iconButton_Home.setOnClickListener(h -> {
-            Intent intent = new Intent(NewPerfilActivity.this, com.timesplit.vista.MainActivity.class);
+            Intent intent = new Intent(NewPerfilActivity.this, com.timesplit.Controlador.MainActivity.class);
             startActivity(intent);
         });
     }

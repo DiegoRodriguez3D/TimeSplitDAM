@@ -1,20 +1,18 @@
-package com.timesplit.vista;
+package com.timesplit.Controlador;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.timesplit.Modelo.OnRecyclerViewItemClickListener;
 import com.timesplit.R;
-import com.timesplit.controlador.Auth_Controller;
-import com.timesplit.controlador.BD_Controller;
-import com.timesplit.controlador.Perfil_Controller;
-import com.timesplit.modelo.Perfil;
-import com.timesplit.modelo.Temporizador;
+import com.timesplit.Modelo.Login;
+import com.timesplit.Modelo.BD;
+import com.timesplit.Modelo.Perfil;
+import com.timesplit.Modelo.Temporizador;
 
 import java.util.List;
 
@@ -24,20 +22,20 @@ public class PerfilesActivity extends AppCompatActivity implements OnRecyclerVie
     private Button iconButton_Back, iconButton_HomeMenu;
     private FloatingActionButton button_add;
     private RecyclerView recyclerView_perfiles;
-    private com.timesplit.vista.RecyclerView_Adapter recyclerView_adapter;
+    private com.timesplit.Controlador.RecyclerView_Adapter recyclerView_adapter;
     private List<Perfil> listaPerfiles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado_perfiles);
-        BD_Controller db = new BD_Controller(PerfilesActivity.this);
+        BD db = new BD(PerfilesActivity.this);
 
         //Prepara recyclerView
         recyclerView_perfiles = findViewById(R.id.recyclerView_perfiles);
 
         //Prepara listaContactos
-        listaPerfiles = Perfil_Controller.listaPerfiles(Auth_Controller.userLog.getId_usuario(), db.getReadableDatabase());
+        listaPerfiles = Perfil.listaPerfiles(Login.userLog.getId_usuario(), db.getReadableDatabase());
 
         //Actualiza el layout del recyclerView cada vez que se actualiza la lista de contactos
         recyclerView_perfiles.setHasFixedSize(true);
@@ -49,7 +47,7 @@ public class PerfilesActivity extends AppCompatActivity implements OnRecyclerVie
         // Si el usuario tiene perfiles creados los muestra
         if (listaPerfiles != null){
             //Prepara adapter
-            recyclerView_adapter = new com.timesplit.vista.RecyclerView_Adapter(listaPerfiles, PerfilesActivity.this);
+            recyclerView_adapter = new com.timesplit.Controlador.RecyclerView_Adapter(listaPerfiles, PerfilesActivity.this);
 
             //Asigna adapter al recyclerView
             recyclerView_perfiles.setAdapter(recyclerView_adapter);
@@ -62,21 +60,21 @@ public class PerfilesActivity extends AppCompatActivity implements OnRecyclerVie
         //Nuevo Perfil
         button_add = findViewById(R.id.floatingActionButton_Add);
         button_add.setOnClickListener(a -> {
-            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.NewPerfilActivity.class);
+            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.Controlador.NewPerfilActivity.class);
             startActivity(intent);
         });
 
         //Back
         iconButton_Back = findViewById(R.id.iconButton_Back);
         iconButton_Back.setOnClickListener(h -> {
-            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.MainActivity.class);
+            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.Controlador.MainActivity.class);
             startActivity(intent);
         });
 
         // Ajustes
         iconButton_HomeMenu = findViewById(R.id.iconButton_HomeMenu);
         iconButton_HomeMenu.setOnClickListener(h -> {
-            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.MenuActivity.class);
+            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.Controlador.MenuActivity.class);
             startActivity(intent);
         });
     }
@@ -88,7 +86,7 @@ public class PerfilesActivity extends AppCompatActivity implements OnRecyclerVie
             Perfil perfil = listaPerfiles.get(position);
             Temporizador temporizador = new Temporizador(perfil.getTiempo_trabajo(), perfil.getTiempo_descanso(), perfil.getTiempo_preparacion(), perfil.getRondas(), perfil.getId_perfil());
             //Crea intent para lanzar la activity con el objeto Temporizador
-            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.vista.TimerActivity.class);
+            Intent intent = new Intent(PerfilesActivity.this, com.timesplit.Controlador.TimerActivity.class);
             //Envia un objeto Temporizador a la nueva activity
             intent.putExtra("Temporizador", temporizador);
             //Abre activity

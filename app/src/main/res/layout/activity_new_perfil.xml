@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.NewPerfilActivity">
+    tools:context=".Controlador.NewPerfilActivity">
 
     <Button
         android:id="@+id/filledButton_GuardarPerfil"
@@ -27,12 +27,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/filledButton_GuardarPerfil"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <Button
             android:id="@+id/textButton_NewPerfil_Avanzado"
@@ -60,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:orientation="vertical"
         android:outlineProvider="none"
@@ -93,8 +95,7 @@
                 android:inputType="textPersonName"
                 android:singleLine="true"
                 android:textColor="?attr/textFillColor"
-                android:textColorHint="?attr/textFillColor"
-                android:textSize="@dimen/textInputSize" />
+                android:textColorHint="?attr/textFillColor" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,13 +104,13 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Trabajo (minutos)"
+            android:hint="Trabajo (mm:ss)"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_timer_24"
-            app:startIconTint="?attr/textFillColor"
-            app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="clear_text">
+            app:startIconTint="?attr/textFillColor">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
                 android:id="@+id/EditText_NewPerfil_trabajo"
@@ -119,7 +120,6 @@
                 android:fontFamily="@font/muli_semibold"
                 android:inputType="time"
                 android:textColor="?attr/textFillColor"
-                android:textSize="@dimen/textInputSize"
                 app:mask="@string/mask_tiempo" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,13 +128,13 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descanso (minutos)"
+            android:hint="Descanso (mm:ss)"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_bedtime_24"
-            app:startIconTint="?attr/textFillColor"
-            app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="clear_text">
+            app:startIconTint="?attr/textFillColor">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
                 android:id="@+id/EditText_NewPerfil_descanso"
@@ -144,7 +144,6 @@
                 android:fontFamily="@font/muli_semibold"
                 android:inputType="time"
                 android:textColor="?attr/textFillColor"
-                android:textSize="@dimen/textInputSize"
                 app:mask="@string/mask_tiempo" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -153,13 +152,13 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Preparación (minutos)"
+            android:hint="Preparación (mm:ss)"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_more_time_24"
-            app:startIconTint="?attr/textFillColor"
-            app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="clear_text">
+            app:startIconTint="?attr/textFillColor">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
                 android:id="@+id/EditText_NewPerfil_preparacion"
@@ -169,7 +168,6 @@
                 android:fontFamily="@font/muli_semibold"
                 android:inputType="time"
                 android:textColor="?attr/textFillColor"
-                android:textSize="@dimen/textInputSize"
                 app:mask="@string/mask_tiempo" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,13 +176,13 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Rondas"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:endIconMode="clear_text"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_timeline_24"
-            app:startIconTint="?attr/textFillColor"
-            android:hint="Rondas"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:endIconMode="clear_text">
+            app:startIconTint="?attr/textFillColor">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
                 android:id="@+id/EditText_NewPerfil_rondas"
@@ -193,9 +191,8 @@
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/muli_semibold"
                 android:inputType="number"
-                android:textSize="@dimen/textInputSize"
                 android:textColor="?attr/textFillColor"
-                app:mask="@string/mask_rondas"/>
+                app:mask="@string/mask_rondas" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -247,7 +244,7 @@
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:isScrollContainer="false"
             app:icon="@drawable/ic_baseline_arrow_back_ios_24"

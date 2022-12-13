@@ -1,18 +1,15 @@
-package com.timesplit.vista;
+package com.timesplit.Controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.mbms.StreamingServiceInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.timesplit.R;
-import com.timesplit.controlador.Perfil_Controller;
-import com.timesplit.modelo.AjustesPerfil;
+import com.timesplit.Modelo.AjustesPerfil;
+import com.timesplit.Utilidades.Utilidades;
 
 public class AjustesNewPerfilActivity extends AppCompatActivity {
 
@@ -43,12 +40,12 @@ public class AjustesNewPerfilActivity extends AppCompatActivity {
         };
 
         String[] colorValores = new String[]{
-                "#E04E40", //Rojo
-                "#4DE9FF", //Azul
-                "#62E62E", //Verde
-                "#FCD160", //Amarillo
-                "#FF9343",  //Naranja
-                "#9351F5" //Morado
+                "#f82b2b", //Rojo
+                "#00a4ef", //Azul
+                "#4fff5d", //Verde
+                "#ffde4c", //Amarillo
+                "#e89d41",  //Naranja
+                "#a232f1" //Morado
         };
 
         String[] sonidoItems = new String[]{
@@ -87,11 +84,11 @@ public class AjustesNewPerfilActivity extends AppCompatActivity {
                 sonido = AutoCompleteTextView_Dropdown_Sonido.getText().toString();
 
                 AjustesPerfil a_perfil = new AjustesPerfil();
-                a_perfil.setColor_trabajo(colorValores[Perfil_Controller.valorPosicionArray(colorItems, colorTrabajo)]);
-                a_perfil.setColor_descanso(colorValores[Perfil_Controller.valorPosicionArray(colorItems, colorDescanso)]);
-                a_perfil.setColor_preparacion(colorValores[Perfil_Controller.valorPosicionArray(colorItems, colorPreparacion)]);
-                a_perfil.setSonido(Perfil_Controller.valorPosicionArray(sonidoItems, sonido));
-                Intent intent = new Intent(AjustesNewPerfilActivity.this, com.timesplit.vista.NewPerfilActivity.class);
+                a_perfil.setColor_trabajo(colorValores[Utilidades.valorPosicionArray(colorItems, colorTrabajo)]);
+                a_perfil.setColor_descanso(colorValores[Utilidades.valorPosicionArray(colorItems, colorDescanso)]);
+                a_perfil.setColor_preparacion(colorValores[Utilidades.valorPosicionArray(colorItems, colorPreparacion)]);
+                a_perfil.setSonido(Utilidades.valorPosicionArray(sonidoItems, sonido));
+                Intent intent = new Intent(AjustesNewPerfilActivity.this, com.timesplit.Controlador.NewPerfilActivity.class);
                 intent.putExtra("AjustesPerfil", a_perfil);
                 startActivity(intent);
 
@@ -109,9 +106,8 @@ public class AjustesNewPerfilActivity extends AppCompatActivity {
         // Ajustes
         iconButton_Home = findViewById(R.id.iconButton_Home);
         iconButton_Home.setOnClickListener(h -> {
-            Intent intent = new Intent(AjustesNewPerfilActivity.this, com.timesplit.vista.MainActivity.class);
+            Intent intent = new Intent(AjustesNewPerfilActivity.this, com.timesplit.Controlador.MainActivity.class);
             startActivity(intent);
         });
-
     }
 }

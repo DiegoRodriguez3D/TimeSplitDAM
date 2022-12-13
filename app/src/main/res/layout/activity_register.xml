@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.RegisterActivity">
+    tools:context=".Controlador.RegisterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
             app:icon="@drawable/ic_baseline_arrow_back_ios_24"
             app:iconGravity="textStart"
@@ -36,7 +36,7 @@
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_weight="1"
             android:isScrollContainer="false"
             app:icon="@drawable/ic_round_home_24"
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:orientation="vertical"
         android:outlineProvider="none"
@@ -69,13 +69,13 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Email"
+            app:boxCornerRadiusTopStart="10dp"
+            app:endIconMode="clear_text"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_email_24"
-            app:startIconTint="?attr/textFillColor"
-            android:hint="Email"
-            app:boxCornerRadiusTopStart="10dp"
-            app:endIconMode="clear_text">
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_Register_Email"
@@ -93,12 +93,12 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            app:endIconMode="password_toggle"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_lock_24"
-            app:startIconTint="?attr/textFillColor"
-            android:hint="Contraseña"
-            app:endIconMode="password_toggle">
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_Register_Pass"
@@ -116,12 +116,12 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Repita Contraseña"
+            app:endIconMode="password_toggle"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_lock_24"
-            app:startIconTint="?attr/textFillColor"
-            android:hint="Repita Contraseña"
-            app:endIconMode="password_toggle">
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_Register_RepeatPass"
@@ -139,12 +139,12 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Nombre"
             app:endIconMode="clear_text"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_person_24"
-            app:startIconTint="?attr/textFillColor"
-            android:hint="Nombre">
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_Register_Nombre"
@@ -164,13 +164,13 @@
             style="?attr/textInputOutlinedDenseStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Apellidos"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:endIconMode="clear_text"
             app:endIconTint="?attr/textFillColor"
             app:hintTextColor="?attr/textFillColor"
             app:startIconDrawable="@drawable/ic_round_person_outline_24"
-            app:startIconTint="?attr/textFillColor"
-            android:hint="Apellidos"
-            app:boxCornerRadiusBottomEnd="10dp"
-            app:endIconMode="clear_text">
+            app:startIconTint="?attr/textFillColor">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/EditText_Register_Apellidos"

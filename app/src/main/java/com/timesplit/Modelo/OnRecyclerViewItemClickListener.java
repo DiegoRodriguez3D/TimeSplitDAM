@@ -1,4 +1,4 @@
-package com.timesplit.vista;
+package com.timesplit.Modelo;
 
  //Interfaz utilizada para seleccionar Perfiles dentro del ReclerView, obteniendo su posicion e id
 public interface OnRecyclerViewItemClickListener {

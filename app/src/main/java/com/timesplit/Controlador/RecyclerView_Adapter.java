@@ -1,22 +1,18 @@
-package com.timesplit.vista;
+package com.timesplit.Controlador;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.timesplit.Modelo.OnRecyclerViewItemClickListener;
 import com.timesplit.R;
-import com.timesplit.modelo.Perfil;
-
+import com.timesplit.Modelo.Perfil;
 import java.util.List;
-
 
 public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adapter.ViewHolder> {
 
@@ -54,15 +50,12 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
 
         holder.parentView.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View v)
             {
                 listener.onRecyclerViewItemClicked(position, -1);
             }
         });
-
-
     }
 
     @Override
@@ -74,9 +67,6 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
     public class ViewHolder extends RecyclerView.ViewHolder {
        public TextView nombrePerfil;
         public CardView parentView;
-//       public TextView tiempoTrabajo;
-//       public TextView tiempoDescanso;
-//       public TextView numeroRondas;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,9 +74,6 @@ public class RecyclerView_Adapter extends RecyclerView.Adapter<RecyclerView_Adap
             //Asignamos a los textView del layout fila_perfil
             nombrePerfil = itemView.findViewById(R.id.textView_nombre_perfil);
             parentView = (CardView) itemView.findViewById(R.id.cardView_contacto);
-//            tiempoTrabajo = itemView.findViewById(R.id.textView_tiempoTrabajo);
-//            tiempoDescanso = itemView.findViewById(R.id.textView_tiempoDescanso);
-//            numeroRondas = itemView.findViewById(R.id.textView_numeroRondas);
 
         }
     }

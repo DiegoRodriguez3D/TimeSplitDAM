@@ -1,19 +1,16 @@
-package com.timesplit.vista;
+package com.timesplit.Controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.timesplit.R;
-import com.timesplit.controlador.Auth_Controller;
-import com.timesplit.controlador.BD_Controller;
-import com.timesplit.controlador.Usuario_Controller;
-import com.timesplit.modelo.Estadisticas;
-import com.timesplit.modelo.Usuario;
+import com.timesplit.Modelo.Login;
+import com.timesplit.Modelo.BD;
+import com.timesplit.Modelo.Estadisticas;
+import com.timesplit.Modelo.Usuario;
 
 public class RegisterActivity extends AppCompatActivity {
 private Button iconButton_Back, iconButton_Home, filledButton_Registrarme;
@@ -25,7 +22,7 @@ private String email, pass, newpass, nombre, apellidos;
         setContentView(R.layout.activity_register);
 
         //BD
-        BD_Controller db = new BD_Controller(RegisterActivity.this);
+        BD db = new BD(RegisterActivity.this);
 
         //DATABINDING
         EditText_Register_Email = findViewById(R.id.EditText_Register_Email);
@@ -46,17 +43,17 @@ private String email, pass, newpass, nombre, apellidos;
                 nombre = EditText_Register_Nombre.getText().toString();
                 apellidos = EditText_Register_Apellidos.getText().toString();
                 //Comprueba que el email es válido
-                if(Auth_Controller.isEmailValido(email)){
+                if(Login.isEmailValido(email)){
                     //Comprueba que el email no existe en BD
-                    if(!Usuario_Controller.existeUsuarioMail(email, db.getReadableDatabase())){
+                    if(!Usuario.existeUsuarioMail(email, db.getReadableDatabase())){
                         //Comprueba que las contraseñas coinciden
-                        if (Auth_Controller.isPassValida(pass, newpass)) {
+                        if (Login.isPassValida(pass, newpass)) {
                             //Crea un usuario y lo inserta en la BD
                             Usuario user = new Usuario(pass, nombre, apellidos, email);
-                            Usuario_Controller.insertUsuario(user, db.getWritableDatabase());
-                            Usuario userID = Usuario_Controller.selectUsuarioByMail(email, db.getReadableDatabase());
+                            Usuario.insertUsuario(user, db.getWritableDatabase());
+                            Usuario userID = Usuario.selectUsuarioByMail(email, db.getReadableDatabase());
                             Estadisticas stats = new Estadisticas(0, 0, 0, 0, userID.getId_usuario());
-                            Usuario_Controller.insertEstadisticaUsuario(stats, db.getWritableDatabase());
+                            Estadisticas.insertEstadisticaUsuario(stats, db.getWritableDatabase());
 
                             //Vuelve a Login
                             finish();
@@ -83,10 +80,8 @@ private String email, pass, newpass, nombre, apellidos;
         // Ajustes
         iconButton_Home = findViewById(R.id.iconButton_Home);
         iconButton_Home.setOnClickListener(h -> {
-            Intent intent = new Intent(RegisterActivity.this, com.timesplit.vista.MainActivity.class);
+            Intent intent = new Intent(RegisterActivity.this, com.timesplit.Controlador.MainActivity.class);
             startActivity(intent);
         });
-
-
     }
 }

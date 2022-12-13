@@ -1,4 +1,4 @@
-package com.timesplit.modelo;
+package com.timesplit.Modelo;
 
 import java.io.Serializable;
 
@@ -10,9 +10,7 @@ public class Temporizador implements Serializable {
     private int numero_rondas;
     private int id_perfil;
 
-
     //Constructores
-
     public Temporizador() {
     }
 
@@ -23,9 +21,6 @@ public class Temporizador implements Serializable {
         this.numero_rondas = numero_rondas;
         this.id_perfil = id_perfil;
     }
-
-
-
 
     //Metodos de acceso
     public String getNombre_timer() {

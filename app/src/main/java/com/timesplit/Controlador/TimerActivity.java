@@ -1,4 +1,4 @@
-package com.timesplit.vista;
+package com.timesplit.Controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,17 +16,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.timesplit.R;
-import com.timesplit.controlador.Auth_Controller;
-import com.timesplit.controlador.BD_Controller;
-import com.timesplit.controlador.Perfil_Controller;
-import com.timesplit.controlador.Usuario_Controller;
-import com.timesplit.modelo.AjustesPerfil;
-import com.timesplit.modelo.AjustesUsuario;
-import com.timesplit.modelo.Estadisticas;
-import com.timesplit.modelo.Perfil;
-import com.timesplit.modelo.Temporizador;
-import com.timesplit.modelo.Usuario;
-import java.util.Locale;
+import com.timesplit.Modelo.Login;
+import com.timesplit.Modelo.BD;
+import com.timesplit.Modelo.AjustesPerfil;
+import com.timesplit.Modelo.AjustesUsuario;
+import com.timesplit.Modelo.Estadisticas;
+import com.timesplit.Modelo.Perfil;
+import com.timesplit.Modelo.Temporizador;
+import com.timesplit.Modelo.Usuario;
 
 
 public class TimerActivity extends AppCompatActivity {
@@ -49,7 +46,7 @@ public class TimerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_timer);
 
         //BD
-        BD_Controller db = new BD_Controller(TimerActivity.this);
+        BD db = new BD(TimerActivity.this);
 
         //Databinding
         textView_Timer = findViewById(R.id.textView_Timer);
@@ -78,10 +75,10 @@ public class TimerActivity extends AppCompatActivity {
             //Si tiene id de perfil, viene desde Perfiles
             if (temporizador.getId_perfil() != 0) {
                 //Comprueba tablas datos
-                Usuario user = Usuario_Controller.selectUsuarioByMail(Auth_Controller.userLog.getEmail(), db.getReadableDatabase());
-                AjustesUsuario a_user = Usuario_Controller.selectAjustesUsuarioByID(user.getId_usuario(), db.getReadableDatabase());
-                Perfil perfil = Perfil_Controller.selectPerfilByID(temporizador.getId_perfil(), db.getReadableDatabase());
-                AjustesPerfil a_perfil = Perfil_Controller.selectAjustesPerfilById(user.getId_usuario(), db.getReadableDatabase());
+                Usuario user = Usuario.selectUsuarioByMail(Login.userLog.getEmail(), db.getReadableDatabase());
+                AjustesUsuario a_user = AjustesUsuario.selectAjustesUsuarioByID(user.getId_usuario(), db.getReadableDatabase());
+                Perfil perfil = Perfil.selectPerfilByID(temporizador.getId_perfil(), db.getReadableDatabase());
+                AjustesPerfil a_perfil = AjustesPerfil.selectAjustesPerfilById(user.getId_usuario(), db.getReadableDatabase());
 
                 //Inicializa las variables con la configuracion del usuario
                 tiempo_Trabajo = perfil.getTiempo_trabajo();
@@ -161,7 +158,7 @@ public class TimerActivity extends AppCompatActivity {
         iconButton_Back = findViewById(R.id.iconButton_Back);
         iconButton_Back.setOnClickListener(h -> {
             stopTimer();
-            Intent intent = new Intent(TimerActivity.this, com.timesplit.vista.MainActivity.class);
+            Intent intent = new Intent(TimerActivity.this, com.timesplit.Controlador.MainActivity.class);
             startActivity(intent);
         });
 
@@ -245,15 +242,20 @@ public class TimerActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                //Si es la ultima ronda, para el temporizador
                 if (rondas_Restantes==1){
                     //Reproduce sonido
                     sp.play(sonidoID, (float)volumen, (float)volumen, 1, 0, 1);
                     isTimerRunning = false;
+                    //Si es un usuario logeado, actualiza estadisticas
+                    if(Login.userLog.getId_usuario()!=0)
+                        actualizaEstadisticas((int)tiempo_Trabajo, (int)tiempo_Descanso, 1);
                     textView_TituloPerfilTimer.setText("FINALIZADO");
                     iconButton_Play.setVisibility(View.VISIBLE);
                     iconButton_Pause.setVisibility(View.INVISIBLE);
                 }else{
-                    //Reproduce sonido
+                    //Comienza con el tiempo de preparación
+                    //A continuación, mientras haya rondas restantes, reproduce en bucle el tiempo de trabajo y el tiempo de descanso.
                     sp.play(sonidoID, (float)volumen, (float)volumen, 1, 0, 1);
                     progressBar.setProgressCompat(0, false);
                     if(isPreparacion){
@@ -280,7 +282,7 @@ public class TimerActivity extends AppCompatActivity {
                         rondas_Restantes--;
                         actualizarRondasTexto();
                         //Si es un usuario logeado, actualiza estadisticas
-                        if(Auth_Controller.userLog.getId_usuario()!=0)
+                        if(Login.userLog.getId_usuario()!=0)
                             actualizaEstadisticas((int)tiempo_Trabajo, (int)tiempo_Descanso, 1);
                     }
 
@@ -313,14 +315,14 @@ public class TimerActivity extends AppCompatActivity {
     }
 
     private void actualizaEstadisticas(int tiempo_Trabajo, int tiempo_Descanso, int ronda){
-        BD_Controller db = new BD_Controller(TimerActivity.this);
-        Usuario user = Usuario_Controller.selectUsuarioByMail(Auth_Controller.userLog.getEmail(), db.getReadableDatabase());
-        Estadisticas estadisticas = Usuario_Controller.selectEstadisticasUsuario(user.getId_usuario(), db.getReadableDatabase());
+        BD db = new BD(TimerActivity.this);
+        Usuario user = Usuario.selectUsuarioByMail(Login.userLog.getEmail(), db.getReadableDatabase());
+        Estadisticas estadisticas = Estadisticas.selectEstadisticasUsuario(user.getId_usuario(), db.getReadableDatabase());
         tiempo_Trabajo += estadisticas.getTotal_trabajo();
         tiempo_Descanso += estadisticas.getTotal_descanso();
         ronda += estadisticas.getTotal_rondas();
-        int numeroPerfiles = Perfil_Controller.listaPerfiles(user.getId_usuario(), db.getReadableDatabase()).size();
+        int numeroPerfiles = Perfil.listaPerfiles(user.getId_usuario(), db.getReadableDatabase()).size();
         Estadisticas newStats = new Estadisticas(numeroPerfiles, tiempo_Trabajo, tiempo_Descanso, ronda, user.getId_usuario());
-        Usuario_Controller.updateEstadisticas(newStats, db.getWritableDatabase());
+        Estadisticas.updateEstadisticas(newStats, db.getWritableDatabase());
     }
 }

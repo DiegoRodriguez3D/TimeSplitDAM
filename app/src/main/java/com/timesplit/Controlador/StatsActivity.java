@@ -1,18 +1,14 @@
-package com.timesplit.vista;
+package com.timesplit.Controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-
-import com.google.android.material.textfield.TextInputEditText;
 import com.timesplit.R;
-import com.timesplit.controlador.Auth_Controller;
-import com.timesplit.controlador.BD_Controller;
-import com.timesplit.controlador.Usuario_Controller;
-import com.timesplit.modelo.Estadisticas;
-import com.timesplit.utilidades.Utilidades;
+import com.timesplit.Modelo.Login;
+import com.timesplit.Modelo.BD;
+import com.timesplit.Modelo.Estadisticas;
+import com.timesplit.Utilidades.Utilidades;
 import com.vicmikhailau.maskededittext.MaskedEditText;
 
 public class StatsActivity extends AppCompatActivity {
@@ -22,7 +18,7 @@ private MaskedEditText EditText_Stats_Perfiles, EditText_Stats_trabajo, EditText
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
-        BD_Controller db = new BD_Controller(StatsActivity.this);
+        BD db = new BD(StatsActivity.this);
 
         //DATABINDING
         EditText_Stats_Perfiles = findViewById(R.id.EditText_Stats_Perfiles);
@@ -31,7 +27,7 @@ private MaskedEditText EditText_Stats_Perfiles, EditText_Stats_trabajo, EditText
         EditText_Stats_Rondas = findViewById(R.id.EditText_Stats_Rondas);
 
         //Recupera datos de BD y los muestra
-        Estadisticas stats = Usuario_Controller.selectEstadisticasUsuario(Auth_Controller.userLog.getId_usuario() ,db.getReadableDatabase());
+        Estadisticas stats = Estadisticas.selectEstadisticasUsuario(Login.userLog.getId_usuario() ,db.getReadableDatabase());
         if (stats != null){
             EditText_Stats_Perfiles.setText(stats.getNumero_perfiles()+"");
             EditText_Stats_trabajo.setText(Utilidades.toHHMMSS(stats.getTotal_trabajo())+"");
@@ -48,9 +44,8 @@ private MaskedEditText EditText_Stats_Perfiles, EditText_Stats_trabajo, EditText
         // Home
         iconButton_Home = findViewById(R.id.iconButton_Home);
         iconButton_Home.setOnClickListener(h -> {
-            Intent intent = new Intent(StatsActivity.this, com.timesplit.vista.MainActivity.class);
+            Intent intent = new Intent(StatsActivity.this, com.timesplit.Controlador.MainActivity.class);
             startActivity(intent);
         });
-
     }
 }

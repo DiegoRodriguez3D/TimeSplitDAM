@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.MenuActivity">
+    tools:context=".Controlador.MenuActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -20,7 +20,7 @@
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_weight="1"
             android:isScrollContainer="false"
             app:icon="@drawable/ic_round_home_24"
@@ -35,7 +35,7 @@
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:isScrollContainer="false"
             app:icon="@drawable/ic_baseline_arrow_back_ios_24"
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:orientation="vertical"
         android:outlineProvider="none"

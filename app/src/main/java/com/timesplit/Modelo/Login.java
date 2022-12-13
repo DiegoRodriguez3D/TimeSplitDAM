@@ -1,14 +1,8 @@
-package com.timesplit.controlador;
+package com.timesplit.Modelo;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.util.Patterns;
 
-import com.google.android.material.textfield.TextInputEditText;
-import com.timesplit.modelo.Usuario;
-
-public class Auth_Controller {
+public class Login {
     public static final String Login = "LogPrefs" ;
     public static final String Nombre = "nombre";
     public static final String Apellidos = "apellidos";
@@ -33,5 +27,4 @@ public class Auth_Controller {
             return false;
         }
     }
-
 }

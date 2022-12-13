@@ -1,6 +1,6 @@
-package com.timesplit.utilidades;
+package com.timesplit.Utilidades;
 
-import java.lang.reflect.Array;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class Utilidades {
 //Constantes globales con los datos de la BD (nombres de tablas, columnas, etc)
@@ -55,6 +55,7 @@ public class Utilidades {
 
 
     //METODOS
+
     //Convierte milisegundos al formato MMSS
     public static int toMMSS(long ms) {
         //Convierte de milisegundos a minutos
@@ -96,4 +97,32 @@ public class Utilidades {
         return toMs(minutos, segundos);
     }
 
+    //Devuelve la posicion en un Array de Strings, del string pasado por parametro
+    public static int valorPosicionArray(String[] items, String nombre){
+        int posicion = -1;
+
+        for (int i = 0; i < items.length; i++) {
+            if(items[i].equals(nombre)){
+                posicion = i;
+                break;
+            }
+        }
+        return posicion;
+    }
+
+    //Cambia el tema de la app dependiendo de los ajustes del usuario
+    public static void cambiaTema (int tema){
+        //Cambia a tema por defecto (Depende del DarkMode del SO)
+        if (tema == 0){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+        }
+
+        //Cambia el tema a Claro
+        if (tema == 1)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        //Cambia el tema a Oscuro
+        if (tema == 2)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+    }
 }

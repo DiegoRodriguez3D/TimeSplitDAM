@@ -1,18 +1,15 @@
-package com.timesplit.vista;
+package com.timesplit.Controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputEditText;
 import com.timesplit.R;
-import com.timesplit.controlador.Auth_Controller;
-import com.timesplit.controlador.BD_Controller;
-import com.timesplit.controlador.Usuario_Controller;
-import com.timesplit.modelo.Usuario;
+import com.timesplit.Modelo.Login;
+import com.timesplit.Modelo.BD;
+import com.timesplit.Modelo.Usuario;
 
 public class PassActivity extends AppCompatActivity {
 private Button iconButton_Back, iconButton_Home, filledButton_Pass_Guardar;
@@ -25,7 +22,7 @@ private String passActual, passNueva, repeatPassNueva;
         setContentView(R.layout.activity_pass);
 
         //BD
-        BD_Controller db = new BD_Controller(PassActivity.this);
+        BD db = new BD(PassActivity.this);
 
         //DATABINDING
         EditText_Pass_oldPass = findViewById(R.id.EditText_Pass_oldPass);
@@ -33,7 +30,7 @@ private String passActual, passNueva, repeatPassNueva;
         EditText_Pass_repeatNewPass = findViewById(R.id.EditText_Pass_repeatNewPass);
 
         // Accede a la BD para recuperar los datos del usuario logeado.
-        Usuario user = Usuario_Controller.selectUsuarioByMail(Auth_Controller.userLog.getEmail(), db.getReadableDatabase());
+        Usuario user = Usuario.selectUsuarioByMail(Login.userLog.getEmail(), db.getReadableDatabase());
 
 
         filledButton_Pass_Guardar = findViewById(R.id.filledButton_Pass_Guardar);
@@ -53,7 +50,7 @@ private String passActual, passNueva, repeatPassNueva;
                             if (passNueva.equals(repeatPassNueva)) {
                                 //Actualiza la contraseña y vuelve a la pantalla anterior
                                 user.setPassword(passNueva);
-                                Usuario_Controller.updateUsuario(user, db.getWritableDatabase());
+                                Usuario.updateUsuario(user, db.getWritableDatabase());
                                 finish();
                             } else {
                                 Toast.makeText(this, "Las contrañas nuevas no coinciden.", Toast.LENGTH_SHORT).show();
@@ -70,7 +67,6 @@ private String passActual, passNueva, repeatPassNueva;
             }
         });
 
-
         //Back
         iconButton_Back = findViewById(R.id.iconButton_Back);
         iconButton_Back.setOnClickListener(h -> {
@@ -80,7 +76,7 @@ private String passActual, passNueva, repeatPassNueva;
         // Home
         iconButton_Home = findViewById(R.id.iconButton_Home);
         iconButton_Home.setOnClickListener(h -> {
-            Intent intent = new Intent(PassActivity.this, com.timesplit.vista.MainActivity.class);
+            Intent intent = new Intent(PassActivity.this, com.timesplit.Controlador.MainActivity.class);
             startActivity(intent);
         });
     }

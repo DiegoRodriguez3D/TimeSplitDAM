@@ -14,7 +14,7 @@
         android:theme="@style/TimeSplit"
         tools:targetApi="31">
         <activity
-            android:name=".vista.MainActivity"
+            android:name=".Controlador.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -23,25 +23,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".vista.PerfilesActivity"
+        <activity android:name=".Controlador.PerfilesActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.MenuActivity"
+        <activity android:name=".Controlador.MenuActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.RegisterActivity"
+        <activity android:name=".Controlador.RegisterActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.LoginActivity"
+        <activity android:name=".Controlador.LoginActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.AjustesUsuarioActivity"
+        <activity android:name=".Controlador.AjustesUsuarioActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.PassActivity"
+        <activity android:name=".Controlador.PassActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.NewPerfilActivity"
+        <activity android:name=".Controlador.NewPerfilActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.AjustesNewPerfilActivity"
+        <activity android:name=".Controlador.AjustesNewPerfilActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.StatsActivity"
+        <activity android:name=".Controlador.StatsActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".vista.TimerActivity"
+        <activity android:name=".Controlador.TimerActivity"
             android:screenOrientation="portrait"/>
 
     </application>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.PerfilesActivity">
+    tools:context=".Controlador.PerfilesActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 app:icon="@drawable/ic_baseline_arrow_back_ios_24"
                 app:iconGravity="textStart"
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 app:icon="@drawable/ic_round_menu_24"
                 app:iconGravity="textStart"
