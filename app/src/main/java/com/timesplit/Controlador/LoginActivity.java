@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
                 if( Login.isEmailValido(email)){
                     //Comprueba que el email exista en la BD y que las contraseñas coincidan
                     Usuario userLog = Usuario.selectUsuarioByMail(email, db.getReadableDatabase());
-                    Log.d("TAG", "userLog: MAIL ->" + userLog.getEmail() + " ID: " + userLog.getId_usuario());
                     if (userLog.getId_usuario()!=0 && Login.isPassValida(userLog.getPassword(), pass)) {
                         //Si el login es correcto, lo guarda en SharedPreferences
                         sp = getSharedPreferences(Login.Login, Context.MODE_PRIVATE);

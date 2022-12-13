@@ -117,12 +117,9 @@ private int id_usuario;
     }
 
     //Recupera un perfil a traves de su id
-    public static Perfil selectPerfilByID (int id_perfil, SQLiteDatabase db) {
-        Cursor cursor = db.query(Utilidades.BD_TABLA_PERFILES,
-                new String[]{Utilidades.PERFILES_ID, Utilidades.PERFILES_NOMBRE, Utilidades.PERFILES_TIEMPO_TRABAJO, Utilidades.PERFILES_TIEMPO_DESCANSO, Utilidades.PERFILES_TIEMPO_PREPARACION,
-                        Utilidades.PERFILES_RONDAS, Utilidades.PERFILES_USERID},
-                Utilidades.PERFILES_ID+"=?",new String[]{id_perfil+""},
-                null,null,null);
+    public static Perfil selectPerfilByID (int id_perfil, int id_usuario, SQLiteDatabase db) {
+        String selectAll = "SELECT * FROM " + Utilidades.BD_TABLA_PERFILES + " WHERE " + Utilidades.PERFILES_ID + " = " + id_perfil + " AND " + Utilidades.PERFILES_USERID + " = " + id_usuario;
+        Cursor cursor = db.rawQuery(selectAll, null);
 
         Perfil perfil = new Perfil();
 
@@ -142,12 +139,9 @@ private int id_usuario;
     }
 
     //Recupera un perfil a traves de su nombre
-    public static Perfil selectPerfilByNombre (String nombre, SQLiteDatabase db) {
-        Cursor cursor = db.query(Utilidades.BD_TABLA_PERFILES,
-                new String[]{Utilidades.PERFILES_ID, Utilidades.PERFILES_NOMBRE, Utilidades.PERFILES_TIEMPO_TRABAJO, Utilidades.PERFILES_TIEMPO_DESCANSO, Utilidades.PERFILES_TIEMPO_PREPARACION,
-                        Utilidades.PERFILES_RONDAS, Utilidades.PERFILES_USERID},
-                Utilidades.PERFILES_NOMBRE+"=?",new String[]{nombre},
-                null,null,null);
+    public static Perfil selectPerfilByNombre (String nombre, int id_usuario, SQLiteDatabase db) {
+        String selectAll = "SELECT * FROM " + Utilidades.BD_TABLA_PERFILES + " WHERE " + Utilidades.PERFILES_NOMBRE + " = '" + nombre + "' AND " + Utilidades.PERFILES_USERID + " = " + id_usuario;
+        Cursor cursor = db.rawQuery(selectAll, null);
 
         Perfil perfil = new Perfil();
 
@@ -171,7 +165,6 @@ private int id_usuario;
         String selectAll = "SELECT * FROM " + Utilidades.BD_TABLA_PERFILES + " WHERE " + Utilidades.PERFILES_NOMBRE + " = '" + nombre + "' AND " + Utilidades.PERFILES_USERID + " = " + id_usuario;
         Cursor cursor = db.rawQuery(selectAll, null);
         //Si recupera datos, va a la primera posicion
-        Log.d("TAG", "existePerfilByNombre: " + cursor.getCount());
         if(cursor.getCount()!=0){
             return true;
         }else{

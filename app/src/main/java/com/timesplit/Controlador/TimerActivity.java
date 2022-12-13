@@ -71,14 +71,13 @@ public class TimerActivity extends AppCompatActivity {
         Intent intentTemporizador = getIntent();
         if (intentTemporizador.getSerializableExtra("Temporizador") != null) {
             Temporizador temporizador = (Temporizador) intentTemporizador.getSerializableExtra("Temporizador");
-            Log.d("TAG", "Temporizador ID PERFIL: " + temporizador.getId_perfil() + " ID PERFIL: "+  temporizador.getNumero_rondas());
             //Si tiene id de perfil, viene desde Perfiles
             if (temporizador.getId_perfil() != 0) {
                 //Comprueba tablas datos
                 Usuario user = Usuario.selectUsuarioByMail(Login.userLog.getEmail(), db.getReadableDatabase());
                 AjustesUsuario a_user = AjustesUsuario.selectAjustesUsuarioByID(user.getId_usuario(), db.getReadableDatabase());
-                Perfil perfil = Perfil.selectPerfilByID(temporizador.getId_perfil(), db.getReadableDatabase());
-                AjustesPerfil a_perfil = AjustesPerfil.selectAjustesPerfilById(user.getId_usuario(), db.getReadableDatabase());
+                Perfil perfil = Perfil.selectPerfilByID(temporizador.getId_perfil(), user.getId_usuario(), db.getReadableDatabase());
+                AjustesPerfil a_perfil = AjustesPerfil.selectAjustesPerfilById(perfil.getId_perfil(), db.getReadableDatabase());
 
                 //Inicializa las variables con la configuracion del usuario
                 tiempo_Trabajo = perfil.getTiempo_trabajo();

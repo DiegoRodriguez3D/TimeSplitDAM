@@ -53,14 +53,20 @@ public class MainActivity extends AppCompatActivity {
         Login.userLog.setNombre(sp.getString(Login.Nombre, ""));
         Login.userLog.setApellidos(sp.getString(Login.Apellidos, ""));
 
-        //Muestra el nombre del usuario en la parte superior
-        textView_HomeUserName.setText( Login.userLog.getNombre());
+        //Si hay usuario logeado, actualiza sus datos y muestra el nombre en el titulo
+        if(Login.userLog.getId_usuario() != 0){
+            Usuario user = Usuario.selectUsuarioByMail(Login.userLog.getEmail(), db.getReadableDatabase());
+            //Muestra el nombre del usuario en la parte superior
+            textView_HomeUserName.setText(user.getNombre());
+        }
 
         //Si no hay usuario logeado, oculta el boton Perfiles
         if(Login.userLog.getId_usuario()==0){
             button_perfiles.setVisibility(View.INVISIBLE);
+            textView_HomeUserName.setVisibility(View.INVISIBLE);
         }else{
             button_perfiles.setVisibility(View.VISIBLE);
+            textView_HomeUserName.setVisibility(View.VISIBLE);
         }
 
         //QuickStart Play
@@ -143,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             Perfil.insertPerfil(testPerfil5, db.getWritableDatabase());
 
             AjustesPerfil a_testPerfil = new AjustesPerfil("#f82b2b", "#4fff5d", "#ffde4c", 1, 1);
-            AjustesPerfil a_testPerfil2 = new AjustesPerfil("#f82b2b", "#4fff5d", "#a232f1", 0, 2);
+            AjustesPerfil a_testPerfil2 = new AjustesPerfil("#f82b2b", "#4fff5d", "#a232f1", 2, 2);
             AjustesPerfil a_testPerfil3 = new AjustesPerfil("#f82b2b", "#4fff5d", "#323bff", 1, 3);
             AjustesPerfil a_testPerfil4 = new AjustesPerfil("#f82b2b", "#4fff5d", "#a232f1", 0, 4);
             AjustesPerfil a_testPerfil5 = new AjustesPerfil("#f82b2b", "#4fff5d", "#ffde4c", 1, 5);

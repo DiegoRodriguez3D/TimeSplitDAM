@@ -3,6 +3,7 @@ package com.timesplit.Controlador;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -88,6 +89,7 @@ public class AjustesNewPerfilActivity extends AppCompatActivity {
                 a_perfil.setColor_descanso(colorValores[Utilidades.valorPosicionArray(colorItems, colorDescanso)]);
                 a_perfil.setColor_preparacion(colorValores[Utilidades.valorPosicionArray(colorItems, colorPreparacion)]);
                 a_perfil.setSonido(Utilidades.valorPosicionArray(sonidoItems, sonido));
+
                 Intent intent = new Intent(AjustesNewPerfilActivity.this, com.timesplit.Controlador.NewPerfilActivity.class);
                 intent.putExtra("AjustesPerfil", a_perfil);
                 startActivity(intent);

@@ -3,6 +3,7 @@ package com.timesplit.Controlador;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
@@ -59,7 +60,6 @@ public class NewPerfilActivity extends AppCompatActivity {
                     tiempoPreparacion = (int) Utilidades.inputMMSS(EditText_NewPerfil_preparacion.getText().toString());
                     rondas = Integer.parseInt(EditText_NewPerfil_rondas.getText().toString());
 
-
                     //Comprueba que no exista un perfil con el nombre introducido para el usuario logeado
                     if(!Perfil.existePerfilByNombre(nombre, user.getId_usuario(), db.getReadableDatabase())){
                         Perfil perfil = new Perfil(nombre, tiempoTrabajo, tiempoDescanso, tiempoPreparacion, rondas, user.getId_usuario());
@@ -68,16 +68,14 @@ public class NewPerfilActivity extends AppCompatActivity {
                         //Si recupera AjustesPerfil a traves de intent, crea objeto
                         if(intentAjustes.getSerializableExtra("AjustesPerfil") != null){
                             AjustesPerfil a_perfil = (AjustesPerfil) intentAjustes.getSerializableExtra("AjustesPerfil");
-
                             //Recupera el id de perfil e inserta los ajustes
-                            Perfil p = Perfil.selectPerfilByNombre(nombre, db.getReadableDatabase());
+                            Perfil p = Perfil.selectPerfilByNombre(nombre, user.getId_usuario(), db.getReadableDatabase());
                             a_perfil.setId_perfil(p.getId_perfil());
                             AjustesPerfil.insertAjustesPerfil(a_perfil, db.getWritableDatabase());
                         }
                     }else{
                         Toast.makeText(getApplicationContext(), "El nombre del perfil ya existe." ,Toast.LENGTH_LONG).show();
                     }
-
                     Intent intent = new Intent(NewPerfilActivity.this, com.timesplit.Controlador.PerfilesActivity.class);
                     startActivity(intent);
 
