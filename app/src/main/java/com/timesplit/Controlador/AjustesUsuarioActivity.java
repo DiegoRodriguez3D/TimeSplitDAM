@@ -69,9 +69,7 @@ public class AjustesUsuarioActivity extends AppCompatActivity {
         if(a_user.getId_ajustes() != 0){
             Slider_Usuario_Volumen.setValue((float) a_user.getVolumen());
             AutoCompleteTextView_Dropdown.setText(temaItems[a_user.getTema()], false);
-            if (a_user.getVolumen() == 0){
-                //TODO -> Mutea la aplicacion en el timer desde el mediaplayer
-            }
+
         }else{
             //Si no existen ajustes, pone valores por defecto
             AutoCompleteTextView_Dropdown.setText(temaItems[0], false);

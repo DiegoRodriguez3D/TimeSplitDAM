@@ -42,7 +42,6 @@ public class Utilidades {
     public static final String PERFILES_A_COLOR_PREPARACION = "color_preparacion";
     public static final String PERFILES_A_SONIDO = "sonido";
     public static final String PERFILES_A_ID_PERFIL = "id_perfil";
-    public static final String PERFILES_A_ID_USERID = "id_usuario";
 
     //Tabla estadisticas
     public static final String BD_TABLA_ESTADISTICAS = "estadisticas";

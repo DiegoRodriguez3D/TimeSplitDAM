@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             Perfil testPerfil2 = new Perfil("Boxear".toUpperCase(Locale.ROOT), 180000, 60000, 20000, 10, testPerfilUsuario.getId_usuario());
             Perfil testPerfil3 = new Perfil("Correr".toUpperCase(Locale.ROOT), 180000, 30000, 10000, 3, testPerfilUsuario.getId_usuario());
             Perfil testPerfil4 = new Perfil("Trabajar".toUpperCase(Locale.ROOT), 3600000, 300000, 60000, 8, testPerfilUsuario.getId_usuario());
-            Perfil testPerfil5 = new Perfil("Test Rápido".toUpperCase(Locale.ROOT), 20000, 10000, 5000, 5, testPerfilUsuario.getId_usuario());
+            Perfil testPerfil5 = new Perfil("Test".toUpperCase(Locale.ROOT), 20000, 10000, 5000, 5, testPerfilUsuario.getId_usuario());
 
 
             Perfil.insertPerfil(testPerfil, db.getWritableDatabase());
