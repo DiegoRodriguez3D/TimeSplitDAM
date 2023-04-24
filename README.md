@@ -19,7 +19,7 @@ Cada vez que se completa el ciclo "tiempo de trabajo - tiempo de descanso", se p
 El temporizador de intervalos finaliza al llegar a la última ronda o cuando el usuario finalice la reproducción.
 
 
-##GALERIA
+## GALERIA
 ![image](https://user-images.githubusercontent.com/69866476/233952044-0e957f04-9a66-45f2-955d-2b8160af8b34.png)
 ![image](https://user-images.githubusercontent.com/69866476/233952209-14d9d66c-e475-469d-9d68-981e91f37114.png)
 ![image](https://user-images.githubusercontent.com/69866476/233952287-b0d8d564-3d53-4feb-ab65-cd43b058d0e0.png)
