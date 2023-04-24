@@ -11,9 +11,9 @@ La aplicación permite al usuario crear y reproducir un temporizador de interval
 En caso de que el usuario se registre e inicie sesión, se permitirá la creación de perfiles para almacenar los temporizadores en la base de datos local. El usuario podrá iniciar los temporizadores pulsando en el respectivo perfil, sin necesidad de introducir nuevamente los parámetros.
 
 Un temporizador consta de 3 tiempos:
-  - Tiempo de preparación: Se reproduce al iniciar por primera vez la reproducción del temporizador.
-  - Tiempo de trabajo: Se reproduce a continuación del tiempo de preparación. Tiempo en el cual el usuario desarrolla la actividad deseada.
-  - Tiempo de descanso: Se reproduce a continuación del tiempo de trabajo. Tiempo en el cual el usuario realiza una pausa en la actividad.
+  - Tiempo de preparación - Tiempo en el cual el usuario se prepara para iniciar la actividad. Se reproduce una única vez al inicio.
+  - Tiempo de trabajo - Tiempo en el cual el usuario desarrolla la actividad deseada. Se reproduce a continuación del tiempo de preparación. 
+  - Tiempo de descanso - Tiempo en el cual el usuario realiza una pausa en la actividad. Se reproduce a continuación del tiempo de trabajo. 
   
 Cada vez que se completa el ciclo "tiempo de trabajo - tiempo de descanso", se pasa a la siguiente ronda y se vuelve a iniciar el ciclo.
 El temporizador de intervalos finaliza al llegar a la última ronda o cuando el usuario finalice la reproducción.
